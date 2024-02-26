@@ -17,4 +17,8 @@ class Tree:
         return f'TreeForm[{self._to_wolfram()}]'
 
     def depth(self) -> int:
-        return max([b.depth() for b in branches]) + 1
+        depths = [b.depth() for b in self.branches]
+        if len(depths) != 0:
+            return max([b.depth() for b in self.branches]) + 1
+        else:
+            return 1

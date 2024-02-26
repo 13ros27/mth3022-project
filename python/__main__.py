@@ -2,6 +2,7 @@ from PyPDF2 import PdfReader
 from os import listdir
 
 import cache, words
+from graph import Graph
 
 @cache.cache
 def read_syllabus_plan(file: str, *, start: str = 'SYLLABUS PLAN - summary of the structure and academic content of the module', end: str = 'LEARNING AND TEACHING'):
@@ -14,6 +15,10 @@ def read_all_files(folder: str, *, start: str = 'SYLLABUS PLAN - summary of the 
 
 if __name__ == '__main__':
     words_map = {k: words.split(v) for (k, v) in read_all_files('C:/Users/willi/Downloads/ModuleInfo').items()}
-    tree = words.compare(words_map['MTH2008'], words_map['MTH2009'])
-    tree.name = 'MTH2008-MTH2009'
-    print(tree.to_wolfram())
+    depths = {}
+    for (k1, v1) in words_map.items():
+        for (k2, v2) in words_map.items():
+            if k1 < k2:
+                tree = words.compare(v1, v2)
+                depths[(k1, k2)] = tree.depth()
+    print(Graph.from_depth(depths, 5).to_wolfram())
