@@ -21,4 +21,4 @@ if __name__ == '__main__':
             if k1 < k2:
                 tree = words.compare(v1, v2)
                 depths[(k1, k2)] = tree.depth()
-    print(Graph.from_depth(depths, 5).to_wolfram())
+    print(Graph.from_depth_conns(depths, 2).to_wolfram())
