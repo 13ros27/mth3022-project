@@ -17,6 +17,12 @@ class Graph:
             labels = ', EdgeLabels -> {' + ','.join(map(str, self.labels)) + '}'
         return 'dg = Graph[{' + ','.join(self.vertices) + '}, {' + ','.join(edges) + '}' + labels + '];'
 
+    def to_rdf(self, label: str) -> str:
+        if self.undirected:
+            return 'rdf = RDFStore[{' + ','.join([f'RDFTriple[ex["{b}"], ex["{label}"], ex["{a}"]]' for (a, b) in self.edges]) + '}]'
+        else:
+            return 'rdf = RDFStore[{' + ','.join([f'RDFTriple[ex["{a}"], ex["{label}"], ex["{b}"]]' for (a, b) in self.edges]) + '}]'
+
     @staticmethod
     def from_depth(depths: dict[(str, str), int], min_depth: int):
         this = Graph(undirected = True)
