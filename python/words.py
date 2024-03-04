@@ -50,4 +50,4 @@ def _compare(words1: list[str], words2: list[str], shared: set[str], ignore: set
 
 def compare(words1: list[str], words2: list[str], spread: int = 2) -> Tree:
     shared = set(words1).intersection(set(words2))
-    return _compare(words1, words2, shared, set(), 2)
+    return _compare(words1, words2, shared, set(), spread)
