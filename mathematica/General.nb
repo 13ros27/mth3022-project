@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     30095,        655]
-NotebookOptionsPosition[     28442,        624]
-NotebookOutlinePosition[     28847,        640]
-CellTagsIndexPosition[     28804,        637]
+NotebookDataLength[     81211,       1811]
+NotebookOptionsPosition[     79101,       1772]
+NotebookOutlinePosition[     79506,       1788]
+CellTagsIndexPosition[     79463,       1785]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -22,7 +22,7 @@ Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<GraphStore`\>\"", "]"}]], "Input",
  CellChangeTimes->{{3.920376819611433*^9, 3.9203768503867416`*^9}},
  CellLabel->
-  "In[1349]:=",ExpressionUUID->"4117abf6-c6a5-6e46-a095-e0efb275203e"],
+  "In[1455]:=",ExpressionUUID->"4117abf6-c6a5-6e46-a095-e0efb275203e"],
 
 Cell[BoxData[
  RowBox[{
@@ -31,9 +31,9 @@ Cell[BoxData[
     RowBox[{
     "\"\<https://www.wolframcloud.com/env/0626c3e2-073a-4ec4-80f9-\\\n\
 01e848d831aa\>\"", ",", " ", "\"\<WL\>\""}], "]"}]}], ";"}]], "Input",
- CellChangeTimes->{3.9203768573515453`*^9, 3.920376892041725*^9},
+ CellChangeTimes->{3.920376857351546*^9, 3.920376892041725*^9},
  CellLabel->
-  "In[1351]:=",ExpressionUUID->"1f4f822d-fe67-1340-8143-30bfeb69673f"],
+  "In[1456]:=",ExpressionUUID->"1f4f822d-fe67-1340-8143-30bfeb69673f"],
 
 Cell[BoxData[
  RowBox[{
@@ -107,9 +107,9 @@ Cell[BoxData[
             RowBox[{"SPARQLVariable", "[", "\"\<label\>\"", "]"}], "]"}], ",",
             " ", "\"\<en\>\""}], "]"}], "]"}]}], "\n", "     ", "}"}], "\n", 
       "    ", "]"}], "]"}]}]}], ";"}]], "Input",
- CellChangeTimes->{{3.920376941393881*^9, 3.9203769473793697`*^9}},
+ CellChangeTimes->{{3.920376941393881*^9, 3.92037694737937*^9}},
  CellLabel->
-  "In[1365]:=",ExpressionUUID->"33e5ba8c-46aa-d04a-8c54-bf8daf3ba481"],
+  "In[1457]:=",ExpressionUUID->"33e5ba8c-46aa-d04a-8c54-bf8daf3ba481"],
 
 Cell[BoxData[
  RowBox[{
@@ -131,9 +131,9 @@ Cell[BoxData[
          RowBox[{
           RowBox[{"Curry", "[", "StringTake", "]"}], "[", "2", "]"}], "]"}]}],
         ")"}]}], "}"}], " ", "//", " ", "Transpose"}]}], ";"}]], "Input",
- CellChangeTimes->{{3.9203769595945644`*^9, 3.9203769614922047`*^9}},
+ CellChangeTimes->{{3.9203769595945644`*^9, 3.920376961492205*^9}},
  CellLabel->
-  "In[1364]:=",ExpressionUUID->"56af1836-9556-3f47-aaea-e948548525a5"],
+  "In[1458]:=",ExpressionUUID->"56af1836-9556-3f47-aaea-e948548525a5"],
 
 Cell[BoxData[{
  RowBox[{
@@ -256,18 +256,18 @@ Cell[BoxData[{
    RowBox[{"DeleteElements", "[", 
     RowBox[{"classPairs", ",", " ", "exclude"}], "]"}]}], ";"}]}], "Input",
  CellChangeTimes->{{3.920376899808607*^9, 3.920376907055887*^9}, {
-  3.9203770356142406`*^9, 3.920377038897789*^9}},
+  3.92037703561424*^9, 3.920377038897789*^9}},
  CellLabel->
-  "In[1367]:=",ExpressionUUID->"69f14c1e-101f-4b44-adde-7c89dc65fec8"],
+  "In[1459]:=",ExpressionUUID->"69f14c1e-101f-4b44-adde-7c89dc65fec8"],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"trainingData", " ", "=", " ", 
    RowBox[{"trainingPairs", " ", "//", " ", 
     RowBox[{"MapApply", "[", "Rule", "]"}]}]}], ";"}]], "Input",
- CellChangeTimes->{{3.9203770433278103`*^9, 3.9203770446569347`*^9}},
+ CellChangeTimes->{{3.920377043327811*^9, 3.9203770446569357`*^9}},
  CellLabel->
-  "In[1378]:=",ExpressionUUID->"07f12ea2-19df-7b47-b5e7-62dae8099946"],
+  "In[1470]:=",ExpressionUUID->"07f12ea2-19df-7b47-b5e7-62dae8099946"],
 
 Cell[CellGroupData[{
 
@@ -279,7 +279,7 @@ Cell[BoxData[
    "DeleteDuplicates"}]}]], "Input",
  CellChangeTimes->{3.920377071318592*^9},
  CellLabel->
-  "In[1379]:=",ExpressionUUID->"cf811ca4-072a-f943-be0c-3179d8ef63aa"],
+  "In[1471]:=",ExpressionUUID->"cf811ca4-072a-f943-be0c-3179d8ef63aa"],
 
 Cell[BoxData[
  RowBox[{"{", 
@@ -302,17 +302,287 @@ Cell[BoxData[
     ",", "\<\"86\"\>", ",", "\<\"90\"\>", ",", "\<\"91\"\>", 
    ",", "\<\"92\"\>", ",", "\<\"93\"\>", ",", "\<\"94\"\>", 
    ",", "\<\"97\"\>"}], "}"}]], "Output",
- CellChangeTimes->{3.920377073962929*^9},
+ CellChangeTimes->{3.920377073962929*^9, 3.9203788638305035`*^9},
  CellLabel->
-  "Out[1379]=",ExpressionUUID->"5f837b40-eb89-d140-b305-aa9b5727ab2f"]
+  "Out[1471]=",ExpressionUUID->"ee4b8855-30d3-f646-a530-c1776733e54d"]
 }, Open  ]],
+
+Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{"classifier", " ", "=", " ", 
   RowBox[{"Classify", "[", "trainingData", "]"}]}]], "Input",
- CellChangeTimes->{{3.9203770996266804`*^9, 
-  3.920377115102028*^9}},ExpressionUUID->"8703a3e3-24ee-9744-8049-\
-2b9d7a8a6285"],
+ CellChangeTimes->{{3.9203770996266804`*^9, 3.920377115102028*^9}},
+ CellLabel->
+  "In[1472]:=",ExpressionUUID->"8703a3e3-24ee-9744-8049-2b9d7a8a6285"],
+
+Cell[BoxData[
+ TagBox[
+  TemplateBox[{
+    RowBox[{
+      StyleBox[
+       TagBox["ClassifierFunction", "SummaryHead"], 
+       "NonInterpretableSummary"], 
+      StyleBox["[", "NonInterpretableSummary"], 
+      DynamicModuleBox[{
+       Typeset`open$$ = False, Typeset`embedState$$ = "Ready"}, 
+       TemplateBox[{
+         TemplateBox[{
+           PaneSelectorBox[{False -> GridBox[{{
+                 PaneBox[
+                  ButtonBox[
+                   DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEBitmaps", "SummaryBoxOpener"]], 
+                   ButtonFunction :> (Typeset`open$$ = True), Appearance -> 
+                   None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                   "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                  Dynamic[{
+                    Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                 GraphicsBox[{{
+                    PointSize[0.13], 
+                    GrayLevel[0.45], 
+                    
+                    PointBox[{{0.9821769431797024, -0.440194219686987}, {
+                    1.1339776261519132`, 0.8056918676854272}, {
+                    0.5279892326667741, 0.6574306661126254}, {
+                    0.022147046479890797`, 1.4937877187998898`}}], 
+                    GrayLevel[0.7], 
+                    
+                    PointBox[{{-0.9815166384819979, 
+                    0.15045697525228735`}, {-0.5923526886966953, \
+-0.33441771553094035`}, {-0.005656646679640442, -1.462421365651345}, \
+{-1.0734370436522753`, -1.3729645043477454`}}]}, {
+                    GrayLevel[0.55], 
+                    AbsoluteThickness[1.5], 
+                    LineBox[{{-1., 1.5}, {1, -1.6}}]}}, {
+                  Axes -> {False, False}, AxesLabel -> {None, None}, 
+                   AxesOrigin -> {0, 0}, BaseStyle -> {FontFamily -> "Arial", 
+                    AbsoluteThickness[1.5]}, DisplayFunction -> Identity, 
+                   Frame -> {{True, True}, {True, True}}, 
+                   FrameLabel -> {{None, None}, {None, None}}, FrameStyle -> 
+                   Directive[
+                    Thickness[Tiny], 
+                    GrayLevel[0.7]], 
+                   FrameTicks -> {{None, None}, {None, None}}, 
+                   GridLines -> {None, None}, 
+                   LabelStyle -> {FontFamily -> "Arial"}, 
+                   Method -> {"ScalingFunctions" -> None}, 
+                   PlotRange -> {{-1., 1}, {-1.3, 1.1}}, PlotRangeClipping -> 
+                   True, PlotRangePadding -> {{0.7, 0.7}, {0.7, 0.7}}, 
+                   Ticks -> {None, None}}, Axes -> False, AspectRatio -> 1, 
+                  ImageSize -> 
+                  Dynamic[{
+                    Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}], Frame -> True, FrameTicks -> None, 
+                  FrameStyle -> Directive[
+                    Opacity[0.5], 
+                    Thickness[Tiny], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], Background -> 
+                  GrayLevel[0.94]], 
+                 GridBox[{{
+                    RowBox[{
+                    TagBox["\"Input type: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["\"Text\"", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox[
+                    "\"Number of classes: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    TagBox[
+                    TooltipBox["63", 
+                    TagBox[
+                    RowBox[{"{", 
+                    
+                    RowBox[{"\"00\"", ",", "\"01\"", ",", "\"03\"", ",", 
+                    "\"05\"", ",", "\"06\"", ",", "\"08\"", ",", "\"11\"", 
+                    ",", "\"12\"", ",", "\"13\"", ",", "\"14\"", ",", 
+                    "\"15\"", ",", "\"16\"", ",", "\"17\"", ",", 
+                    RowBox[{"\[LeftSkeleton]", "37", "\[RightSkeleton]"}], 
+                    ",", "\"78\"", ",", "\"80\"", ",", "\"81\"", ",", 
+                    "\"82\"", ",", "\"83\"", ",", "\"85\"", ",", "\"86\"", 
+                    ",", "\"90\"", ",", "\"91\"", ",", "\"92\"", ",", 
+                    "\"93\"", ",", "\"94\"", ",", "\"97\""}], "}"}], 
+                    Short[#, 1]& ]], Annotation[#, 
+                    
+                    Short[{"00", "01", "03", "05", "06", "08", "11", "12", 
+                    "13", "14", "15", "16", "17", "18", "19", "20", "22", 
+                    "26", "28", "30", "31", "32", "33", "34", "35", "37", 
+                    "39", "40", "41", "42", "43", "44", "45", "46", "47", 
+                    "49", "51", "52", "53", "54", "55", "57", "58", "60", 
+                    "62", "65", "68", "70", "74", "76", "78", "80", "81", 
+                    "82", "83", "85", "86", "90", "91", "92", "93", "94", 
+                    "97"}, 1], "Tooltip"]& ], "SummaryItem"]}]}}, 
+                  GridBoxAlignment -> {
+                   "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, 
+                  AutoDelete -> False, 
+                  GridBoxItemSize -> {
+                   "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                  GridBoxSpacings -> {
+                   "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                  BaseStyle -> {
+                   ShowStringCharacters -> False, NumberMarks -> False, 
+                    PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+               GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}},
+                AutoDelete -> False, 
+               GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+               BaselinePosition -> {1, 1}], True -> GridBox[{{
+                 PaneBox[
+                  ButtonBox[
+                   DynamicBox[
+                    FEPrivate`FrontEndResource[
+                    "FEBitmaps", "SummaryBoxCloser"]], 
+                   ButtonFunction :> (Typeset`open$$ = False), Appearance -> 
+                   None, BaseStyle -> {}, Evaluator -> Automatic, Method -> 
+                   "Preemptive"], Alignment -> {Center, Center}, ImageSize -> 
+                  Dynamic[{
+                    Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}]], 
+                 GraphicsBox[{{
+                    PointSize[0.13], 
+                    GrayLevel[0.45], 
+                    
+                    PointBox[{{0.9821769431797024, -0.440194219686987}, {
+                    1.1339776261519132`, 0.8056918676854272}, {
+                    0.5279892326667741, 0.6574306661126254}, {
+                    0.022147046479890797`, 1.4937877187998898`}}], 
+                    GrayLevel[0.7], 
+                    
+                    PointBox[{{-0.9815166384819979, 
+                    0.15045697525228735`}, {-0.5923526886966953, \
+-0.33441771553094035`}, {-0.005656646679640442, -1.462421365651345}, \
+{-1.0734370436522753`, -1.3729645043477454`}}]}, {
+                    GrayLevel[0.55], 
+                    AbsoluteThickness[1.5], 
+                    LineBox[{{-1., 1.5}, {1, -1.6}}]}}, {
+                  Axes -> {False, False}, AxesLabel -> {None, None}, 
+                   AxesOrigin -> {0, 0}, BaseStyle -> {FontFamily -> "Arial", 
+                    AbsoluteThickness[1.5]}, DisplayFunction -> Identity, 
+                   Frame -> {{True, True}, {True, True}}, 
+                   FrameLabel -> {{None, None}, {None, None}}, FrameStyle -> 
+                   Directive[
+                    Thickness[Tiny], 
+                    GrayLevel[0.7]], 
+                   FrameTicks -> {{None, None}, {None, None}}, 
+                   GridLines -> {None, None}, 
+                   LabelStyle -> {FontFamily -> "Arial"}, 
+                   Method -> {"ScalingFunctions" -> None}, 
+                   PlotRange -> {{-1., 1}, {-1.3, 1.1}}, PlotRangeClipping -> 
+                   True, PlotRangePadding -> {{0.7, 0.7}, {0.7, 0.7}}, 
+                   Ticks -> {None, None}}, Axes -> False, AspectRatio -> 1, 
+                  ImageSize -> 
+                  Dynamic[{
+                    Automatic, 
+                    3.5 (CurrentValue["FontCapHeight"]/AbsoluteCurrentValue[
+                    Magnification])}], Frame -> True, FrameTicks -> None, 
+                  FrameStyle -> Directive[
+                    Opacity[0.5], 
+                    Thickness[Tiny], 
+                    RGBColor[0.368417, 0.506779, 0.709798]], Background -> 
+                  GrayLevel[0.94]], 
+                 GridBox[{{
+                    RowBox[{
+                    TagBox["\"Input type: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["\"Text\"", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox[
+                    "\"Number of classes: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox[
+                    TagBox[
+                    TooltipBox["63", 
+                    TagBox[
+                    RowBox[{"{", 
+                    
+                    RowBox[{"\"00\"", ",", "\"01\"", ",", "\"03\"", ",", 
+                    "\"05\"", ",", "\"06\"", ",", "\"08\"", ",", "\"11\"", 
+                    ",", "\"12\"", ",", "\"13\"", ",", "\"14\"", ",", 
+                    "\"15\"", ",", "\"16\"", ",", "\"17\"", ",", 
+                    RowBox[{"\[LeftSkeleton]", "37", "\[RightSkeleton]"}], 
+                    ",", "\"78\"", ",", "\"80\"", ",", "\"81\"", ",", 
+                    "\"82\"", ",", "\"83\"", ",", "\"85\"", ",", "\"86\"", 
+                    ",", "\"90\"", ",", "\"91\"", ",", "\"92\"", ",", 
+                    "\"93\"", ",", "\"94\"", ",", "\"97\""}], "}"}], 
+                    Short[#, 1]& ]], Annotation[#, 
+                    
+                    Short[{"00", "01", "03", "05", "06", "08", "11", "12", 
+                    "13", "14", "15", "16", "17", "18", "19", "20", "22", 
+                    "26", "28", "30", "31", "32", "33", "34", "35", "37", 
+                    "39", "40", "41", "42", "43", "44", "45", "46", "47", 
+                    "49", "51", "52", "53", "54", "55", "57", "58", "60", 
+                    "62", "65", "68", "70", "74", "76", "78", "80", "81", 
+                    "82", "83", "85", "86", "90", "91", "92", "93", "94", 
+                    "97"}, 1], "Tooltip"]& ], "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox["\"Method: \"", "SummaryItemAnnotation"], 
+                    "\[InvisibleSpace]", 
+                    TagBox["\"Markov\"", "SummaryItem"]}]}, {
+                    RowBox[{
+                    TagBox[
+                    "\"Number of training examples: \"", 
+                    "SummaryItemAnnotation"], "\[InvisibleSpace]", 
+                    TagBox["5075", "SummaryItem"]}]}}, 
+                  GridBoxAlignment -> {
+                   "Columns" -> {{Left}}, "Rows" -> {{Automatic}}}, 
+                  AutoDelete -> False, 
+                  GridBoxItemSize -> {
+                   "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+                  GridBoxSpacings -> {
+                   "Columns" -> {{2}}, "Rows" -> {{Automatic}}}, 
+                  BaseStyle -> {
+                   ShowStringCharacters -> False, NumberMarks -> False, 
+                    PrintPrecision -> 3, ShowSyntaxStyles -> False}]}}, 
+               GridBoxAlignment -> {"Columns" -> {{Left}}, "Rows" -> {{Top}}},
+                AutoDelete -> False, 
+               GridBoxItemSize -> {
+                "Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}, 
+               BaselinePosition -> {1, 1}]}, 
+            Dynamic[Typeset`open$$], ImageSize -> Automatic]}, 
+          "SummaryPanel"], 
+         ButtonBox[
+          DynamicBox[
+           ToBoxes[
+            If[
+             
+             Or[$VersionNumber < 11.2, CurrentValue["RunningEvaluator"] =!= 
+              "Local"], 
+             Style["This object cannot be used as input.", "SummaryEmbed"], 
+             BoxForm`EmbedSummaryLabel[ClassifierFunction, 1813728, 
+              Dynamic[Typeset`embedState$$], Automatic]], StandardForm]], 
+          ButtonFunction :> 
+          BoxForm`EmbedSummaryInterpretation[
+           "Choose", ClassifierFunction, 1813728, 
+            9872110037204529379417209955090192117957230007664305660480, 
+            EvaluationBox[], 
+            Dynamic[Typeset`embedState$$], StandardForm, 
+            ElisionsDump`embedSummaryBoxes], DefaultBaseStyle -> 
+          "SummaryEmbedButton", ImageSize -> Inherited, 
+          BaseStyle -> {"DialogStyle"}, Enabled -> Dynamic[
+            
+            And[$VersionNumber >= 11.2, CurrentValue["RunningEvaluator"] === 
+             "Local", Typeset`embedState$$ === "Ready"]], Appearance -> 
+          Inherited, Method -> Inherited, Evaluator -> Automatic]}, 
+        "SummaryEmbedGrid"], DynamicModuleValues :> {}], 
+      StyleBox["]", "NonInterpretableSummary"]}]},
+   "CopyTag",
+   DisplayFunction->(#& ),
+   InterpretationFunction->("ClassifierFunction[\[Ellipsis]]"& )],
+  False,
+  BoxID -> 9872110037204529379417209955090192117957230007664305660480,
+  Editable->False,
+  SelectWithContents->True,
+  Selectable->False]], "Output",
+ CellChangeTimes->{3.920378864818039*^9},
+ CellLabel->
+  "Out[1472]=",ExpressionUUID->"16911bd8-639b-da48-9711-6bd5acf0214d"]
+}, Open  ]],
 
 Cell["Starting our actual functions:", "Text",
  CellChangeTimes->{{3.920377129640295*^9, 
@@ -326,9 +596,9 @@ Cell[BoxData[
    RowBox[{
    "\"\<http://msc2010.org/resources/MSC/2010/\>\"", " ", "<>", " ", "code", 
     " ", "<>", " ", "\"\<AXX\>\""}]}], ";"}]], "Input",
- CellChangeTimes->{
-  3.9203771468405495`*^9},ExpressionUUID->"783074cf-f766-c441-ac84-\
-62e5e24e6e79"],
+ CellChangeTimes->{3.92037714684055*^9},
+ CellLabel->
+  "In[1473]:=",ExpressionUUID->"783074cf-f766-c441-ac84-62e5e24e6e79"],
 
 Cell["And our actual stuff:", "Text",
  CellChangeTimes->{{3.920377154654228*^9, 
@@ -376,9 +646,9 @@ Cell[BoxData[{
      "categories"}], "//", "Flatten"}], "//", "RDFStore"}], "//", 
   "RDFGraph"}]}], "Input",
  CellChangeTimes->{
-  3.920377121360531*^9, {3.9203771709430637`*^9, 3.9203771767673016`*^9}},
+  3.920377121360531*^9, {3.9203771709430637`*^9, 3.920377176767302*^9}},
  CellLabel->
-  "In[1380]:=",ExpressionUUID->"4ec3b071-22f1-0443-8f3d-2ac67ed1a64d"],
+  "In[1474]:=",ExpressionUUID->"4ec3b071-22f1-0443-8f3d-2ac67ed1a64d"],
 
 Cell[BoxData[
  GraphicsBox[
@@ -617,12 +887,890 @@ zmx+mD8WLGS5Wdhy/AVX5CT6
   DefaultBaseStyle->"NetworkGraphics",
   FormatType->TraditionalForm,
   FrameTicks->None]], "Output",
- CellChangeTimes->{3.9203771795967445`*^9},
+ CellChangeTimes->{3.9203771795967445`*^9, 3.92037886600366*^9},
  CellLabel->
-  "Out[1382]=",ExpressionUUID->"bfb07f7e-7082-814e-ae70-9daed65013f0"]
+  "Out[1476]=",ExpressionUUID->"de9a4557-3cf3-3a45-a835-811378d60f71"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"filterOther", "[", "store_", "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"store", "//", 
+        RowBox[{"SPARQLSelect", "[", "\n", "     ", 
+         RowBox[{"RDFTriple", "[", 
+          RowBox[{
+           RowBox[{"SPARQLVariable", "[", "\"\<s\>\"", "]"}], ",", " ", 
+           RowBox[{"SPARQLVariable", "[", "\"\<p\>\"", "]"}], ",", " ", "\n", 
+           "      ", 
+           RowBox[{"SPARQLVariable", "[", "\"\<o\>\"", "]"}]}], "]"}], "\n", 
+         "     ", "]"}]}], " ", "//", " ", 
+       RowBox[{"Map", "[", 
+        RowBox[{"Function", "[", "\n", 
+         RowBox[{"{", 
+          RowBox[{"#s", ",", " ", "#p", ",", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Function", "[", 
+                RowBox[{"r", ",", 
+                 RowBox[{"StringReplace", "[", 
+                  RowBox[{"#o", ",", 
+                   RowBox[{"r", "->", 
+                    RowBox[{"\"\<2010/\>\"", "<>", 
+                    RowBox[{"StringPart", "[", 
+                    RowBox[{"r", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"6", ",", "7"}], "}"}]}], "]"}], "<>", 
+                    "\"\<XXX\>\""}]}]}], "]"}]}], "]"}], "/@", 
+               RowBox[{"StringCases", "[", 
+                RowBox[{"#o", ",", " ", 
+                 RowBox[{
+                 "RegularExpression", "[", "\"\<2010/\\d\\d[A-Z]\\d\\d\>\"", 
+                  "]"}]}], "]"}]}], " ", "//", " ", 
+              RowBox[{"Append", "[", "#o", "]"}]}], ")"}], "[", 
+            RowBox[{"[", "1", "]"}], "]"}]}], "}"}], "\n", "     ", "]"}], 
+        "]"}]}], "//", 
+      RowBox[{"Select", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], "==", 
+         RowBox[{"ex", "[", "\"\<uses\>\"", "]"}]}], "&"}], "]"}]}], "//", 
+     "DeleteDuplicates"}], "//", "RDFStore"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.920378741915571*^9, 3.9203788268344784`*^9}, {
+  3.9203788975469685`*^9, 3.920378897885128*^9}},
+ EmphasizeSyntaxErrors->
+  True,ExpressionUUID->"b3f51d6e-9293-1f41-8546-015aa3dd8203"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"filterOther", "[", 
+    RowBox[{"CloudImport", "[", 
+     RowBox[{
+     "\"\<https://www.wolframcloud.com/env/e5c61039-81b9-49d6-8032-\
+46e848745bd6\>\"", ",", " ", "\"\<WL\>\""}], "]"}], "]"}], "//", "RDFGraph"}],
+   "//", "TooltipGraph", " ", 
+  RowBox[{"(*", 
+   RowBox[{"Ben", " ", "White"}], "*)"}]}]], "Input",
+ CellChangeTimes->{
+  3.9203789023011303`*^9, {3.9203789481493015`*^9, 
+   3.920378950314842*^9}},ExpressionUUID->"eb92898e-93cc-e544-9a94-\
+20096e3ea8db"],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[
+    0.010679271708683474`], {
+     ArrowBox[{{4.50001, -1.50001}, {4.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {4.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{4.50001, -1.50001}, {3.5000099999999996`, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {4.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{4.50001, -1.50001}, {6.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {5.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{4.50001, -1.50001}, {2.5000099999999996`, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {3.5000099999999996, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{4.50001, -1.50001}, {7.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {6.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{7.50001, -1.50001}, {6.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {7.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{7.50001, -1.50001}, {7.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {7.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{7.50001, -1.50001}, {5.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {6.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{7.50001, -1.50001}, {13.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {10.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{7.50001, -1.50001}, {11.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {9.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{7.50001, -1.50001}, {9.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {8.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{15.50001, -1.50001}, {13.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {14.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{15.50001, -1.50001}, {14.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {15.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{15.50001, -1.50001}, {16.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {16.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{15.50001, -1.50001}, {17.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {16.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{15.50001, -1.50001}, {15.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {15.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{9.50001, -1.50001}, {6.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {8.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{9.50001, -1.50001}, {7.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {8.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{9.50001, -1.50001}, {11.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {10.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{9.50001, -1.50001}, {9.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {9.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{9.50001, -1.50001}, {18.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {14.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{9.50001, -1.50001}, {10.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {10.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{21.50001, -1.50001}, {13.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {17.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{21.50001, -1.50001}, {18.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {20.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{21.50001, -1.50001}, {21.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {21.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{21.50001, -1.50001}, {22.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {22.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{21.50001, -1.50001}, {23.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {22.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{14.50001, -1.50001}, {6.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {10.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{14.50001, -1.50001}, {13.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {14.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{14.50001, -1.50001}, {14.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {14.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{14.50001, -1.50001}, {16.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {15.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{14.50001, -1.50001}, {17.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {16.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{10.50001, -1.50001}, {7.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {9.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{10.50001, -1.50001}, {13.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {12.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{2.5000099999999996`, -1.50001}, {6.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {4.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{2.5000099999999996`, -1.50001}, {
+      2.5000099999999996`, -2.50001}}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {2.5000099999999996, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{2.5000099999999996`, -1.50001}, {
+      1.5000099999999996`, -2.50001}}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {2.0000099999999996, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{1.5000099999999996`, -5.500030000000001}, {
+      1.5000099999999996`, -6.500030000000001}}, 0.09397759103641457], 
+     InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {1.5000099999999996, -6.000030000000001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{6.50001, -1.50001}, {4.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {5.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{6.50001, -1.50001}, {6.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {6.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{6.50001, -1.50001}, {8.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {7.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{11.50001, -1.50001}, {6.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {9.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{11.50001, -1.50001}, {7.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {9.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{11.50001, -1.50001}, {13.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {12.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{11.50001, -1.50001}, {11.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {11.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{11.50001, -1.50001}, {9.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {10.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{11.50001, -1.50001}, {14.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {13.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{11.50001, -1.50001}, {8.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {10.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{11.50001, -1.50001}, {12.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {12.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{16.50001, -1.50001}, {13.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {15.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{16.50001, -1.50001}, {11.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {14.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{16.50001, -1.50001}, {18.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {17.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{16.50001, -1.50001}, {19.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {18.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{17.50001, -1.50001}, {16.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {17.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{17.50001, -1.50001}, {17.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {17.50001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}, {
+     ArrowBox[{{17.50001, -1.50001}, {20.50001, -2.50001}}, 
+      0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\"+\"\>",
+        "\"http://example.org/uses\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/uses", "Tooltip"]& ], {19.00001, -2.00001},
+       ImageScaled[{0.5, 0.5}],
+      BaseStyle->"Graphics"]}}, 
+   {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[
+    0.7]}], {DiskBox[{4.50001, -1.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://example.org/MTH1001\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/MTH1001", "Tooltip"]& ], {4.50001, -1.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{4.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/03XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/03XXX", 
+        "Tooltip"]& ], {4.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{3.5000099999999996`, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/11XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/11XXX", 
+        "Tooltip"]& ], {3.5000099999999996, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{6.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/15XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/15XXX", 
+        "Tooltip"]& ], {6.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{2.5000099999999996`, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/20XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/20XXX", 
+        "Tooltip"]& ], {2.5000099999999996, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{7.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/40XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/40XXX", 
+        "Tooltip"]& ], {7.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{7.50001, -1.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://example.org/MTH1002\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/MTH1002", "Tooltip"]& ], {7.50001, -1.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{5.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/14XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/14XXX", 
+        "Tooltip"]& ], {5.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{13.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/26XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/26XXX", 
+        "Tooltip"]& ], {13.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{11.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/34XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/34XXX", 
+        "Tooltip"]& ], {11.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{9.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/41XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/41XXX", 
+        "Tooltip"]& ], {9.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{15.50001, -1.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://example.org/MTH1004\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/MTH1004", "Tooltip"]& ], {15.50001, -1.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{14.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/60XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/60XXX", 
+        "Tooltip"]& ], {14.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{16.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/62-07\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/62-07", 
+        "Tooltip"]& ], {16.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{17.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/62XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/62XXX", 
+        "Tooltip"]& ], {17.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{15.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/68XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/68XXX", 
+        "Tooltip"]& ], {15.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{9.50001, -1.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://example.org/MTH2003\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/MTH2003", "Tooltip"]& ], {9.50001, -1.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{18.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/35XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/35XXX", 
+        "Tooltip"]& ], {18.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{10.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/42XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/42XXX", 
+        "Tooltip"]& ], {10.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{21.50001, -1.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://example.org/MTH2004\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/MTH2004", "Tooltip"]& ], 
+      {21.50001, -1.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{21.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/74XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/74XXX", 
+        "Tooltip"]& ], {21.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{22.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/76XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/76XXX", 
+        "Tooltip"]& ], {22.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{23.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/78XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/78XXX", 
+        "Tooltip"]& ], {23.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{14.50001, -1.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://example.org/MTH2006\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/MTH2006", "Tooltip"]& ], {14.50001, -1.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{10.50001, -1.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://example.org/MTH2008\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/MTH2008", "Tooltip"]& ], {10.50001, -1.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{2.5000099999999996`, -1.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://example.org/MTH2011\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/MTH2011", "Tooltip"]& ], {2.5000099999999996, -1.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{1.5000099999999996`, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/46XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/46XXX", 
+        "Tooltip"]& ], {1.5000099999999996, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{1.5000099999999996`, -5.500030000000001}, 0.09397759103641457], 
+     InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://example.org/MTH3019\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/MTH3019", "Tooltip"]& ], {1.5000099999999996, -5.500030000000001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{1.5000099999999996`, -6.500030000000001}, 0.09397759103641457], 
+     InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/01XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/01XXX", 
+        "Tooltip"]& ], {1.5000099999999996, -6.500030000000001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{6.50001, -1.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://example.org/MTH3022\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/MTH3022", "Tooltip"]& ], {6.50001, -1.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{8.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/05XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/05XXX", 
+        "Tooltip"]& ], {8.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{11.50001, -1.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://example.org/MTH3024\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/MTH3024", "Tooltip"]& ], {11.50001, -1.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{12.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/82XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/82XXX", 
+        "Tooltip"]& ], {12.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{16.50001, -1.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://example.org/MTH3030\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/MTH3030", "Tooltip"]& ], {16.50001, -1.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{19.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/86Axx\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/86Axx", 
+        "Tooltip"]& ], {19.50001, -2.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{17.50001, -1.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://example.org/MTH3035\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://example.org/MTH3035", "Tooltip"]& ], {17.50001, -1.50001},
+      BaseStyle->"Graphics"]}, {
+     DiskBox[{20.50001, -2.50001}, 0.09397759103641457], InsetBox[
+      TagBox[
+       TooltipBox["\<\" \"\>",
+        "\"http://msc2010.org/resources/MSC/2010/92XXX\"",
+        TooltipStyle->"TextStyling"],
+       Annotation[#, "http://msc2010.org/resources/MSC/2010/92XXX", 
+        "Tooltip"]& ], {20.50001, -2.50001},
+      BaseStyle->"Graphics"]}}},
+  FormatType->TraditionalForm,
+  FrameTicks->None]], "Output",
+ CellChangeTimes->{{3.920378787490443*^9, 3.920378829436861*^9}, 
+   3.9203788667199593`*^9, 3.9203789043995647`*^9},
+ CellLabel->
+  "Out[1479]=",ExpressionUUID->"2b8e4add-277b-a147-9e0b-0c33ad1bda4c"]
 }, Open  ]]
 },
-WindowSize->{1141.2, 651.6},
+WindowSize->{1141.2, 640.8},
 WindowMargins->{{0, Automatic}, {Automatic, 0}},
 FrontEndVersion->"14.0 for Microsoft Windows (64-bit) (December 12, 2023)",
 StyleDefinitions->"Default.nb",
@@ -640,22 +1788,30 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[558, 20, 228, 4, 28, "Input",ExpressionUUID->"4117abf6-c6a5-6e46-a095-e0efb275203e"],
-Cell[789, 26, 422, 9, 86, "Input",ExpressionUUID->"1f4f822d-fe67-1340-8143-30bfeb69673f"],
-Cell[1214, 37, 3334, 74, 485, "Input",ExpressionUUID->"33e5ba8c-46aa-d04a-8c54-bf8daf3ba481"],
-Cell[4551, 113, 877, 22, 67, "Input",ExpressionUUID->"56af1836-9556-3f47-aaea-e948548525a5"],
-Cell[5431, 137, 4581, 123, 561, "Input",ExpressionUUID->"69f14c1e-101f-4b44-adde-7c89dc65fec8"],
-Cell[10015, 262, 329, 7, 28, "Input",ExpressionUUID->"07f12ea2-19df-7b47-b5e7-62dae8099946"],
+Cell[789, 26, 420, 9, 86, "Input",ExpressionUUID->"1f4f822d-fe67-1340-8143-30bfeb69673f"],
+Cell[1212, 37, 3331, 74, 485, "Input",ExpressionUUID->"33e5ba8c-46aa-d04a-8c54-bf8daf3ba481"],
+Cell[4546, 113, 875, 22, 67, "Input",ExpressionUUID->"56af1836-9556-3f47-aaea-e948548525a5"],
+Cell[5424, 137, 4578, 123, 561, "Input",ExpressionUUID->"69f14c1e-101f-4b44-adde-7c89dc65fec8"],
+Cell[10005, 262, 327, 7, 28, "Input",ExpressionUUID->"07f12ea2-19df-7b47-b5e7-62dae8099946"],
 Cell[CellGroupData[{
-Cell[10369, 273, 325, 8, 28, "Input",ExpressionUUID->"cf811ca4-072a-f943-be0c-3179d8ef63aa"],
-Cell[10697, 283, 1448, 23, 66, "Output",ExpressionUUID->"5f837b40-eb89-d140-b305-aa9b5727ab2f"]
+Cell[10357, 273, 325, 8, 28, "Input",ExpressionUUID->"cf811ca4-072a-f943-be0c-3179d8ef63aa"],
+Cell[10685, 283, 1472, 23, 66, "Output",ExpressionUUID->"ee4b8855-30d3-f646-a530-c1776733e54d"]
 }, Open  ]],
-Cell[12160, 309, 242, 5, 28, "Input",ExpressionUUID->"8703a3e3-24ee-9744-8049-2b9d7a8a6285"],
-Cell[12405, 316, 174, 3, 35, "Text",ExpressionUUID->"ee378a3c-a94d-b845-b97a-2da7da363b13"],
-Cell[12582, 321, 340, 9, 28, "Input",ExpressionUUID->"783074cf-f766-c441-ac84-62e5e24e6e79"],
-Cell[12925, 332, 163, 3, 35, "Text",ExpressionUUID->"f58708d7-7baf-904a-87e9-f965b648de5d"],
 Cell[CellGroupData[{
-Cell[13113, 339, 1382, 41, 86, "Input",ExpressionUUID->"4ec3b071-22f1-0443-8f3d-2ac67ed1a64d"],
-Cell[14498, 382, 13928, 239, 330, "Output",ExpressionUUID->"bfb07f7e-7082-814e-ae70-9daed65013f0"]
+Cell[12194, 311, 266, 5, 28, "Input",ExpressionUUID->"8703a3e3-24ee-9744-8049-2b9d7a8a6285"],
+Cell[12463, 318, 13668, 265, 99, "Output",ExpressionUUID->"16911bd8-639b-da48-9711-6bd5acf0214d"]
+}, Open  ]],
+Cell[26146, 586, 174, 3, 35, "Text",ExpressionUUID->"ee378a3c-a94d-b845-b97a-2da7da363b13"],
+Cell[26323, 591, 361, 9, 28, "Input",ExpressionUUID->"783074cf-f766-c441-ac84-62e5e24e6e79"],
+Cell[26687, 602, 163, 3, 35, "Text",ExpressionUUID->"f58708d7-7baf-904a-87e9-f965b648de5d"],
+Cell[CellGroupData[{
+Cell[26875, 609, 1380, 41, 86, "Input",ExpressionUUID->"4ec3b071-22f1-0443-8f3d-2ac67ed1a64d"],
+Cell[28258, 652, 13949, 239, 330, "Output",ExpressionUUID->"de9a4557-3cf3-3a45-a835-811378d60f71"]
+}, Open  ]],
+Cell[42222, 894, 2208, 54, 143, "Input",ExpressionUUID->"b3f51d6e-9293-1f41-8546-015aa3dd8203"],
+Cell[CellGroupData[{
+Cell[44455, 952, 519, 14, 48, "Input",ExpressionUUID->"eb92898e-93cc-e544-9a94-20096e3ea8db"],
+Cell[44977, 968, 34108, 801, 125, "Output",ExpressionUUID->"2b8e4add-277b-a147-9e0b-0c33ad1bda4c"]
 }, Open  ]]
 }
 ]
