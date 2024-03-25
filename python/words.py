@@ -5,7 +5,7 @@ from tree import Tree
 def split(text: str) -> list[str]:
     replaced = []
     for char in text:
-        if char == '-':
+        if char == '-' or ord(char) >= 256:
             continue
         elif char.isalpha():
             replaced.append(char.lower())
