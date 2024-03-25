@@ -1,0 +1,663 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 14.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     30095,        655]
+NotebookOptionsPosition[     28442,        624]
+NotebookOutlinePosition[     28847,        640]
+CellTagsIndexPosition[     28804,        637]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Needs", "[", "\"\<GraphStore`\>\"", "]"}]], "Input",
+ CellChangeTimes->{{3.920376819611433*^9, 3.9203768503867416`*^9}},
+ CellLabel->
+  "In[1349]:=",ExpressionUUID->"4117abf6-c6a5-6e46-a095-e0efb275203e"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"MSCStore", " ", "=", " ", "\n", " ", 
+   RowBox[{"CloudImport", "[", "\n", "  ", 
+    RowBox[{
+    "\"\<https://www.wolframcloud.com/env/0626c3e2-073a-4ec4-80f9-\\\n\
+01e848d831aa\>\"", ",", " ", "\"\<WL\>\""}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{3.9203768573515453`*^9, 3.920376892041725*^9},
+ CellLabel->
+  "In[1351]:=",ExpressionUUID->"1f4f822d-fe67-1340-8143-30bfeb69673f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"concepts", " ", "=", " ", 
+   RowBox[{"MSCStore", " ", "//", " ", 
+    RowBox[{"SPARQLQuery", "[", "\n", "   ", 
+     RowBox[{"SPARQLSelect", "[", 
+      RowBox[{"{", " ", 
+       RowBox[{"(*", " ", 
+        RowBox[{
+        "This", " ", "first", " ", "query", " ", "finds", " ", "subjects", 
+         " ", "with", " ", "codes"}], " ", "*)"}], "\n", "     ", 
+       RowBox[{
+        RowBox[{"RDFTriple", "[", "\n", "      ", 
+         RowBox[{
+          RowBox[{"SPARQLVariable", "[", "\"\<concept\>\"", "]"}], ",", "\n", 
+          "      ", 
+          RowBox[{
+          "URL", "[", "\"\<http://www.w3.org/2004/02/skos/core#notation\>\"", 
+           "]"}], ",", "\n", "      ", 
+          RowBox[{"SPARQLVariable", "[", "\"\<code\>\"", "]"}]}], "\n", 
+         "      ", "]"}], ",", " ", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+         "The", " ", "second", " ", "query", " ", "finds", " ", "subjects", 
+          " ", "with", " ", "labels"}], " ", "*)"}], "\n", "     ", 
+        RowBox[{"RDFTriple", "[", "\n", "      ", 
+         RowBox[{
+          RowBox[{"SPARQLVariable", "[", "\"\<concept\>\"", "]"}], ",", "\n", 
+          "      ", 
+          RowBox[{
+          "URL", "[", "\"\<http://www.w3.org/2004/02/skos/core#prefLabel\>\"",
+            "]"}], ",", "\n", "      ", 
+          RowBox[{"SPARQLVariable", "[", "\"\<label\>\"", "]"}]}], "\n", 
+         "      ", "]"}], ",", " ", 
+        RowBox[{"(*", " ", "\n", "     ", 
+         RowBox[{
+         "The", " ", "third", " ", "query", " ", "finds", " ", "subjects", 
+          " ", "that", " ", "are", " ", "Concepts", " ", "in", " ", "the", 
+          " ", 
+          RowBox[{"SKOS", " ", "\\\n", "language"}]}], " ", "*)"}], "\n", 
+        "     ", 
+        RowBox[{"RDFTriple", "[", "\n", "      ", 
+         RowBox[{
+          RowBox[{"SPARQLVariable", "[", "\"\<concept\>\"", "]"}], ",", "\n", 
+          "      ", 
+          RowBox[{
+          "URL", "[", 
+           "\"\<http://www.w3.org/1999/02/22-rdf-syntax-ns#type\>\"", "]"}], 
+          ",", "\n", "      ", 
+          RowBox[{
+          "URL", "[", "\"\<http://www.w3.org/2004/02/skos/core#Concept\>\"", 
+           "]"}]}], "\n", "      ", "]"}], ",", " ", 
+        RowBox[{"(*", " ", 
+         RowBox[{
+          RowBox[{
+          "So", " ", "now", " ", "we", " ", "only", " ", "have", " ", 
+           "concepts", " ", "with", " ", "their", " ", "code", " ", "and", 
+           " ", "label"}], ",", " ", "\n", "     ", 
+          RowBox[{
+          "but", " ", "we", " ", "want", " ", "only", " ", "the", " ", 
+           "English", " ", "language", " ", "labels"}]}], " ", "*)"}], "\n", 
+        "     ", 
+        RowBox[{"SPARQLFilter", "[", "\n", "      ", 
+         RowBox[{
+          RowBox[{"SPARQLEvaluation", "[", "\"\<langMatches\>\"", "]"}], "[", 
+          "\n", "       ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"SPARQLEvaluation", "[", "\"\<lang\>\"", "]"}], "[", 
+            RowBox[{"SPARQLVariable", "[", "\"\<label\>\"", "]"}], "]"}], ",",
+            " ", "\"\<en\>\""}], "]"}], "]"}]}], "\n", "     ", "}"}], "\n", 
+      "    ", "]"}], "]"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.920376941393881*^9, 3.9203769473793697`*^9}},
+ CellLabel->
+  "In[1365]:=",ExpressionUUID->"33e5ba8c-46aa-d04a-8c54-bf8daf3ba481"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"classPairs", " ", "=", " ", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"\"\<label\>\"", " ", "/.", " ", "concepts"}], " ", "//", " ",
+         "\n", "     ", 
+        RowBox[{"Map", "[", "First", "]"}]}], ")"}], ",", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"\"\<code\>\"", " ", "/.", " ", "concepts"}], " ", "//", " ", 
+         RowBox[{"Map", "[", "First", "]"}]}], " ", "//", " ", "\n", "     ", 
+        RowBox[{"Map", "[", 
+         RowBox[{
+          RowBox[{"Curry", "[", "StringTake", "]"}], "[", "2", "]"}], "]"}]}],
+        ")"}]}], "}"}], " ", "//", " ", "Transpose"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.9203769595945644`*^9, 3.9203769614922047`*^9}},
+ CellLabel->
+  "In[1364]:=",ExpressionUUID->"56af1836-9556-3f47-aaea-e948548525a5"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"exclude1", " ", "=", " ", "\n", "  ", 
+   RowBox[{"Select", "[", 
+    RowBox[{"classPairs", ",", " ", "\n", "   ", 
+     RowBox[{
+      RowBox[{"StringMatchQ", "[", 
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", " ", 
+        RowBox[{
+        "___", " ", "~~", " ", "\"\<Proceedings\>\"", " ", "~~", " ", 
+         "___"}]}], "]"}], " ", "&"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"exclude2", " ", "=", " ", "\n", "  ", 
+   RowBox[{"Select", "[", 
+    RowBox[{"classPairs", ",", " ", "\n", "   ", 
+     RowBox[{
+      RowBox[{"StringMatchQ", "[", 
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", " ", 
+        RowBox[{
+        "___", " ", "~~", " ", "\"\<Historical\>\"", " ", "~~", " ", 
+         "___"}]}], "]"}], " ", "&"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"exclude3", " ", "=", " ", "\n", "  ", 
+   RowBox[{"Select", "[", 
+    RowBox[{"classPairs", ",", " ", "\n", "   ", 
+     RowBox[{
+      RowBox[{"StringMatchQ", "[", 
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", " ", 
+        RowBox[{
+        "___", " ", "~~", " ", "\"\<General reference\>\"", " ", "~~", " ", 
+         "___"}]}], "]"}], " ", "&"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"exclude4", " ", "=", " ", "\n", "  ", 
+   RowBox[{"Select", "[", 
+    RowBox[{"classPairs", ",", " ", "\n", "   ", 
+     RowBox[{
+      RowBox[{"StringMatchQ", "[", 
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", " ", 
+        RowBox[{"___", " ", "~~", " ", "\"\<Computational methods\>\""}]}], 
+       "]"}], " ", "&"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"exclude5", " ", "=", " ", "\n", "  ", 
+   RowBox[{"Select", "[", 
+    RowBox[{"classPairs", ",", " ", "\n", "   ", 
+     RowBox[{
+      RowBox[{"StringMatchQ", "[", 
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", " ", 
+        RowBox[{
+        "___", " ", "~~", " ", "\"\<Instructional\>\"", " ", "~~", " ", 
+         "___"}]}], "]"}], " ", "&"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"exclude6", " ", "=", " ", "\n", "  ", 
+   RowBox[{"Select", "[", 
+    RowBox[{"classPairs", ",", " ", 
+     RowBox[{
+      RowBox[{"StringMatchQ", "[", 
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", " ", 
+        RowBox[{
+        "___", " ", "~~", " ", "\"\<Explicit\>\"", " ", "~~", " ", "___"}]}], 
+       "]"}], " ", "&"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"exclude7", " ", "=", " ", "\n", "  ", 
+   RowBox[{"Select", "[", 
+    RowBox[{"classPairs", ",", " ", "\n", "   ", 
+     RowBox[{
+      RowBox[{"StringMatchQ", "[", 
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", " ", 
+        RowBox[{
+        "___", " ", "~~", " ", "\"\<Experimental\>\"", " ", "~~", " ", 
+         "___"}]}], "]"}], " ", "&"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"exclude8", " ", "=", " ", "\n", "  ", 
+   RowBox[{"Select", "[", 
+    RowBox[{"classPairs", ",", " ", 
+     RowBox[{
+      RowBox[{"StringMatchQ", "[", 
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", " ", 
+        RowBox[{
+        "___", " ", "~~", " ", "\"\<Research\>\"", " ", "~~", " ", "___"}]}], 
+       "]"}], " ", "&"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"exclude9", " ", "=", " ", "\n", "  ", 
+   RowBox[{"Select", "[", 
+    RowBox[{"classPairs", ",", " ", "\n", "   ", 
+     RowBox[{
+      RowBox[{"StringMatchQ", "[", 
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", " ", 
+        RowBox[{
+        "___", " ", "~~", " ", "\"\<None of the above\>\"", " ", "~~", " ", 
+         "___"}]}], "]"}], " ", "&"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"exclude", " ", "=", " ", "\n", "  ", 
+   RowBox[{"Join", "[", 
+    RowBox[{
+    "exclude1", ",", " ", "exclude2", ",", " ", "exclude3", ",", " ", 
+     "exclude4", ",", " ", "exclude5", ",", " ", "exclude6", ",", " ", "\n", 
+     "   ", "exclude7", ",", " ", "exclude8", ",", " ", "exclude9"}], "]"}]}],
+   ";"}], "\n", 
+ RowBox[{
+  RowBox[{"trainingPairs", " ", "=", " ", 
+   RowBox[{"DeleteElements", "[", 
+    RowBox[{"classPairs", ",", " ", "exclude"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.920376899808607*^9, 3.920376907055887*^9}, {
+  3.9203770356142406`*^9, 3.920377038897789*^9}},
+ CellLabel->
+  "In[1367]:=",ExpressionUUID->"69f14c1e-101f-4b44-adde-7c89dc65fec8"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"trainingData", " ", "=", " ", 
+   RowBox[{"trainingPairs", " ", "//", " ", 
+    RowBox[{"MapApply", "[", "Rule", "]"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.9203770433278103`*^9, 3.9203770446569347`*^9}},
+ CellLabel->
+  "In[1378]:=",ExpressionUUID->"07f12ea2-19df-7b47-b5e7-62dae8099946"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"classes", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"trainingData", " ", "//", " ", 
+    RowBox[{"Map", "[", "Last", "]"}]}], " ", "//", " ", 
+   "DeleteDuplicates"}]}]], "Input",
+ CellChangeTimes->{3.920377071318592*^9},
+ CellLabel->
+  "In[1379]:=",ExpressionUUID->"cf811ca4-072a-f943-be0c-3179d8ef63aa"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"00\"\>", ",", "\<\"01\"\>", ",", "\<\"03\"\>", 
+   ",", "\<\"05\"\>", ",", "\<\"06\"\>", ",", "\<\"08\"\>", ",", "\<\"11\"\>",
+    ",", "\<\"12\"\>", ",", "\<\"13\"\>", ",", "\<\"14\"\>", 
+   ",", "\<\"15\"\>", ",", "\<\"16\"\>", ",", "\<\"17\"\>", ",", "\<\"18\"\>",
+    ",", "\<\"19\"\>", ",", "\<\"20\"\>", ",", "\<\"22\"\>", 
+   ",", "\<\"26\"\>", ",", "\<\"28\"\>", ",", "\<\"30\"\>", ",", "\<\"31\"\>",
+    ",", "\<\"32\"\>", ",", "\<\"33\"\>", ",", "\<\"34\"\>", 
+   ",", "\<\"35\"\>", ",", "\<\"37\"\>", ",", "\<\"39\"\>", ",", "\<\"40\"\>",
+    ",", "\<\"41\"\>", ",", "\<\"42\"\>", ",", "\<\"43\"\>", 
+   ",", "\<\"44\"\>", ",", "\<\"45\"\>", ",", "\<\"46\"\>", ",", "\<\"47\"\>",
+    ",", "\<\"49\"\>", ",", "\<\"51\"\>", ",", "\<\"52\"\>", 
+   ",", "\<\"53\"\>", ",", "\<\"54\"\>", ",", "\<\"55\"\>", ",", "\<\"57\"\>",
+    ",", "\<\"58\"\>", ",", "\<\"60\"\>", ",", "\<\"62\"\>", 
+   ",", "\<\"65\"\>", ",", "\<\"68\"\>", ",", "\<\"70\"\>", ",", "\<\"74\"\>",
+    ",", "\<\"76\"\>", ",", "\<\"78\"\>", ",", "\<\"80\"\>", 
+   ",", "\<\"81\"\>", ",", "\<\"82\"\>", ",", "\<\"83\"\>", ",", "\<\"85\"\>",
+    ",", "\<\"86\"\>", ",", "\<\"90\"\>", ",", "\<\"91\"\>", 
+   ",", "\<\"92\"\>", ",", "\<\"93\"\>", ",", "\<\"94\"\>", 
+   ",", "\<\"97\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.920377073962929*^9},
+ CellLabel->
+  "Out[1379]=",ExpressionUUID->"5f837b40-eb89-d140-b305-aa9b5727ab2f"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"classifier", " ", "=", " ", 
+  RowBox[{"Classify", "[", "trainingData", "]"}]}]], "Input",
+ CellChangeTimes->{{3.9203770996266804`*^9, 
+  3.920377115102028*^9}},ExpressionUUID->"8703a3e3-24ee-9744-8049-\
+2b9d7a8a6285"],
+
+Cell["Starting our actual functions:", "Text",
+ CellChangeTimes->{{3.920377129640295*^9, 
+  3.9203771505372066`*^9}},ExpressionUUID->"ee378a3c-a94d-b845-b97a-\
+2da7da363b13"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"msc", "[", "code_", "]"}], " ", ":=", " ", 
+   RowBox[{
+   "\"\<http://msc2010.org/resources/MSC/2010/\>\"", " ", "<>", " ", "code", 
+    " ", "<>", " ", "\"\<AXX\>\""}]}], ";"}]], "Input",
+ CellChangeTimes->{
+  3.9203771468405495`*^9},ExpressionUUID->"783074cf-f766-c441-ac84-\
+62e5e24e6e79"],
+
+Cell["And our actual stuff:", "Text",
+ CellChangeTimes->{{3.920377154654228*^9, 
+  3.920377159996063*^9}},ExpressionUUID->"f58708d7-7baf-904a-87e9-\
+f965b648de5d"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"MTH", " ", "=", " ", 
+   RowBox[{"Import", "[", "\"\<to_import.m\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"categories", " ", "=", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"#", "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", " ", 
+       RowBox[{
+        RowBox[{"#", "[", 
+         RowBox[{"[", "2", "]"}], "]"}], "//", "classifier"}]}], "}"}], "&"}],
+     "/@", "MTH"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"Function", "[", 
+        RowBox[{"code", ",", 
+         RowBox[{"RDFTriple", "[", 
+          RowBox[{
+           RowBox[{"ex", "[", 
+            RowBox[{"#", "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", 
+           RowBox[{"ex", "[", "\"\<uses\>\"", "]"}], ",", 
+           RowBox[{"msc", "[", "code", "]"}]}], "]"}]}], "]"}], "/@", 
+       RowBox[{"Commonest", "[", 
+        RowBox[{
+         RowBox[{"#", "[", 
+          RowBox[{"[", "2", "]"}], "]"}], ",", "5"}], "]"}]}], "&"}], "/@", 
+     "categories"}], "//", "Flatten"}], "//", "RDFStore"}], "//", 
+  "RDFGraph"}]}], "Input",
+ CellChangeTimes->{
+  3.920377121360531*^9, {3.9203771709430637`*^9, 3.9203771767673016`*^9}},
+ CellLabel->
+  "In[1380]:=",ExpressionUUID->"4ec3b071-22f1-0443-8f3d-2ac67ed1a64d"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["NetworkGraphics",
+   DynamicModuleBox[{Typeset`graph = HoldComplete[
+     Graph[{
+      "http://example.org/MTH1000", 
+       "http://msc2010.org/resources/MSC/2010/97AXX", 
+       "http://msc2010.org/resources/MSC/2010/11AXX", 
+       "http://msc2010.org/resources/MSC/2010/35AXX", 
+       "http://msc2010.org/resources/MSC/2010/05AXX", 
+       "http://msc2010.org/resources/MSC/2010/33AXX", 
+       "http://example.org/MTH1001", 
+       "http://msc2010.org/resources/MSC/2010/68AXX", 
+       "http://msc2010.org/resources/MSC/2010/03AXX", 
+       "http://msc2010.org/resources/MSC/2010/46AXX", 
+       "http://example.org/MTH1002", 
+       "http://msc2010.org/resources/MSC/2010/30AXX", 
+       "http://msc2010.org/resources/MSC/2010/34AXX", 
+       "http://example.org/MTH1003", 
+       "http://msc2010.org/resources/MSC/2010/65AXX", 
+       "http://msc2010.org/resources/MSC/2010/74AXX", 
+       "http://example.org/MTH1004", 
+       "http://msc2010.org/resources/MSC/2010/62AXX", 
+       "http://msc2010.org/resources/MSC/2010/60AXX", 
+       "http://example.org/MTH2003", "http://example.org/MTH2004", 
+       "http://msc2010.org/resources/MSC/2010/76AXX", 
+       "http://example.org/MTH2005", 
+       "http://msc2010.org/resources/MSC/2010/90AXX", 
+       "http://example.org/MTH2006", "http://example.org/MTH2008", 
+       "http://msc2010.org/resources/MSC/2010/57AXX", 
+       "http://msc2010.org/resources/MSC/2010/26AXX", 
+       "http://example.org/MTH2009", 
+       "http://msc2010.org/resources/MSC/2010/32AXX", 
+       "http://msc2010.org/resources/MSC/2010/45AXX", 
+       "http://example.org/MTH2010", 
+       "http://msc2010.org/resources/MSC/2010/20AXX", 
+       "http://msc2010.org/resources/MSC/2010/13AXX", 
+       "http://example.org/MTH2011", 
+       "http://msc2010.org/resources/MSC/2010/55AXX", 
+       "http://example.org/MTH3001", 
+       "http://msc2010.org/resources/MSC/2010/82AXX", 
+       "http://example.org/MTH3004", 
+       "http://msc2010.org/resources/MSC/2010/16AXX", 
+       "http://example.org/MTH3006", "http://example.org/MTH3007", 
+       "http://example.org/MTH3008", "http://example.org/MTH3011", 
+       "http://msc2010.org/resources/MSC/2010/93AXX", 
+       "http://msc2010.org/resources/MSC/2010/91AXX", 
+       "http://msc2010.org/resources/MSC/2010/37AXX", 
+       "http://example.org/MTH3013", "http://example.org/MTH3019", 
+       "http://msc2010.org/resources/MSC/2010/01AXX", 
+       "http://msc2010.org/resources/MSC/2010/51AXX", 
+       "http://example.org/MTH3022", "http://example.org/MTH3024", 
+       "http://example.org/MTH3026", 
+       "http://msc2010.org/resources/MSC/2010/14AXX", 
+       "http://example.org/MTH3028", "http://example.org/MTH3030", 
+       "http://msc2010.org/resources/MSC/2010/54AXX", 
+       "http://msc2010.org/resources/MSC/2010/81AXX", 
+       "http://example.org/MTH3038", "http://example.org/MTH3039", 
+       "http://example.org/MTH3040", 
+       "http://msc2010.org/resources/MSC/2010/28AXX", 
+       "http://example.org/MTH3041", "http://example.org/MTH3042", 
+       "http://msc2010.org/resources/MSC/2010/47AXX", 
+       "http://example.org/MTH3045"}, {CompressedData["
+1:eJwVxe1eQ1AAB+D5n7MJm4O8hCwyk5c2CrEhcgddQjfQLXWp1Yfn9wRf359f
+WK1WP3/+58ARjnJrbsODv+EFnvCiBGkrUYlIOxkykxV5J1MVqqbeqkRVdOhM
+p/pO3xowTGNtKAa1YAnWncUsasPWbGozW3BcB87WuXdED97W23uu9+DDD/xH
+n/gsPIQkpCFCMUKkRDQyo2NMYsSb2I2fEiRCwhKamClLkdLUTJUMGc1YpmVB
+jvw5P+VCfi5QuAUtToVYotTKl/K1JBWqdUUqt9rXtzVqpaY1adC8NUFDGtYK
+rdayFq3YoXvuLt21M3v01/7Qkz4Y9sPTwAYM5xEjGS/jYXyfMGmTMJ2m4/ww
+0/ljxswWLMflZiEL+wVmTCT6
+       "], Null, {
+       "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses", 
+        "http://example.org/uses", "http://example.org/uses"}}]]}, 
+    TagBox[GraphicsGroupBox[GraphicsComplexBox[CompressedData["
+1:eJw1kGkwHAYYhvdi11qsK2VDZcdR4iojoYjvQ6ij2ipCRYKInWipo8hkQyKx
+KjGOBBN3EmeTEMR9lkSHRglLSlXYGEcNuyTCEleqM+0z887z7/3xsM+FfxNM
+IhAI9gf7107XvggVD+7DtrRqR6SIimb+k0s3giioqv9w9rUHEZ0bR28FK1Lx
+rZ0oSk2bjOKnhoPXLEgY4Md7FVBOxu4sfzetX3aA8An/fdt5BtotxhoH+ghh
+vjR6z0ZHCrdMGoMW6yTx0Mx0ZEzZO/gtpEiDflYaLXynQwSjApAz060malJQ
+cnKs5DbtDajY3dIiLRNQzuDJpVXmWyhr3t8YstyDqsz6mqo8CSyUlrX+00UI
+eq5CjTE9EvaKTLv+ChJDEsrNsrkMRJvjsR1pRKSPG5opFknhYTft/LtJZKzj
+pbc6G5BxQTervpRJRXpqpM3eIQZm0yusZVhS+H1h8SON32nIb6cVz2bRkXP5
+XlCHLQEzWUoqTwylMDz3hfCPUibeUfBQ8Op/DwP2CxejpyRQfSAts8mMgvph
+nZz7ETRs+qrnlTldGvti2tQc1Uhofe9C3HDlBwiQrM/UOi6G9e2EFPv1d4DD
+ngoRv/ZAyDM2T72LjP3NKVlc3i4ktF4OHFFcg3Q2Nca1YwNCC9xbxqpEYF3j
++xkhcA8I/5Hu42g3nD8PDbIJ/OxWEfQzokta3ChocWGmtpMrgK7nDUVXk4iY
+m7FYR88ZBc8wvc4tRTp6nlp6TDjGwKK5m+65ajRkUljlskeYOMRJ7ONP0XA1
+1uN2BUkBK2qd3bhcObyj3puZFExD0+U89wzTXUjWMC72dpJHVVb4ritrBx5O
+7J8rLD3oLPhQ7jVHxuuLmtMcExnUtzuh3mC0CeIaj0rhgBh8PCEr7hERdWWk
+R664TMKUQ11++dFtOF8xp2j0QgKZfPUSm6d7YOUVVaAZLImxBYvjZe2SuJnC
+nYqMPPgnp1llVEugsoew58x1MvbmjKw4tMyAZEu8HZ8tjf93Sb604Zp3hoi8
+x0czrPxewmtXlxugJ4a4q4Ec7TABqFQmRnykuAvd44wA/kkxFKXLuuQ8YOLC
+xdbQLzkUzJ9sr24MVUYj5aXnS7k0NCj0l48ZV8ZA4z52ookEHr5JD/1csAUl
+Dm1qna1kvKIpzJsYlMCOrzWtU83pGDPHt1rn0pF9umNg0oGODb6knsQTcsjq
+OoVH9uVR53r1IvVnCpo5jNlasbcgpAV4Xb6yGM8XpcUz12BJ1D52/1sFjBo6
+ZmrCn4NCJYPGnXUFXBvRKtz5QQzPZjmBEeFyKDwr8+nEd0RcNsuZXK3dAJd1
+81Jq6Ta8VCpb+VGeiZ1OusX9m5vAqOnz7ppSwl7boea0+WVoSr3rJL9OxcSV
+4W6/rDcQZq/298fJYnDdDd9Le0BDi5PejpZJAii3VG/J9mPixGkil2MjhSwf
+Cx3OT1vwD2652LI=
+       "], {
+        {Hue[0.6, 0.7, 0.5], Opacity[0.7], Arrowheads[0.020885843393710687`], 
+         ArrowBox[CompressedData["
+1:eJwVxe1eQ1AAB+D5n7MJm4O8hCwyk5c2CrEhcgddQjfQLXWp1Yfn9wRf359f
+WK1WP3/+58ARjnJrbsODJ/wNL/CiBIlIVNpKOxkylXcykxUVKlEVVVNvdehU
+3+o7nRkwqLE2FMO0YFFLsJh1Z8OmtmAzW3PgiM7WcZ17D97Wc7299+DDJz7z
+A/8xREhCGorhIUJEIyUyo2OMmMSb2I2fEiQ0ERKWmClSmrJUSc0MGc1YpmVB
+jlzIn/NTfi5Q0EIs3OJUoiSlVr6UrxUqUq0rt9rXqElNa6W+bdCQhjVB89ai
+FVqxZa3WoTO75+7SXXv0pA/6Q38dMLBhPzwN5xEjGQ/jZXyfMAmTNh2n04yZ
+zmx+mD8WLGS5Wdhy/AVX5CT6
+          "], 0.045618086497714774`]}, 
+        {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[0.7]}], 
+         DiskBox[1, 0.045618086497714774], DiskBox[2, 0.045618086497714774], 
+         DiskBox[3, 0.045618086497714774], DiskBox[4, 0.045618086497714774], 
+         DiskBox[5, 0.045618086497714774], DiskBox[6, 0.045618086497714774], 
+         DiskBox[7, 0.045618086497714774], DiskBox[8, 0.045618086497714774], 
+         DiskBox[9, 0.045618086497714774], DiskBox[10, 0.045618086497714774], 
+         DiskBox[11, 0.045618086497714774], DiskBox[12, 0.045618086497714774],
+          DiskBox[13, 0.045618086497714774], 
+         DiskBox[14, 0.045618086497714774], DiskBox[15, 0.045618086497714774],
+          DiskBox[16, 0.045618086497714774], 
+         DiskBox[17, 0.045618086497714774], DiskBox[18, 0.045618086497714774],
+          DiskBox[19, 0.045618086497714774], 
+         DiskBox[20, 0.045618086497714774], DiskBox[21, 0.045618086497714774],
+          DiskBox[22, 0.045618086497714774], 
+         DiskBox[23, 0.045618086497714774], DiskBox[24, 0.045618086497714774],
+          DiskBox[25, 0.045618086497714774], 
+         DiskBox[26, 0.045618086497714774], DiskBox[27, 0.045618086497714774],
+          DiskBox[28, 0.045618086497714774], 
+         DiskBox[29, 0.045618086497714774], DiskBox[30, 0.045618086497714774],
+          DiskBox[31, 0.045618086497714774], 
+         DiskBox[32, 0.045618086497714774], DiskBox[33, 0.045618086497714774],
+          DiskBox[34, 0.045618086497714774], 
+         DiskBox[35, 0.045618086497714774], DiskBox[36, 0.045618086497714774],
+          DiskBox[37, 0.045618086497714774], 
+         DiskBox[38, 0.045618086497714774], DiskBox[39, 0.045618086497714774],
+          DiskBox[40, 0.045618086497714774], 
+         DiskBox[41, 0.045618086497714774], DiskBox[42, 0.045618086497714774],
+          DiskBox[43, 0.045618086497714774], 
+         DiskBox[44, 0.045618086497714774], DiskBox[45, 0.045618086497714774],
+          DiskBox[46, 0.045618086497714774], 
+         DiskBox[47, 0.045618086497714774], DiskBox[48, 0.045618086497714774],
+          DiskBox[49, 0.045618086497714774], 
+         DiskBox[50, 0.045618086497714774], DiskBox[51, 0.045618086497714774],
+          DiskBox[52, 0.045618086497714774], 
+         DiskBox[53, 0.045618086497714774], DiskBox[54, 0.045618086497714774],
+          DiskBox[55, 0.045618086497714774], 
+         DiskBox[56, 0.045618086497714774], DiskBox[57, 0.045618086497714774],
+          DiskBox[58, 0.045618086497714774], 
+         DiskBox[59, 0.045618086497714774], DiskBox[60, 0.045618086497714774],
+          DiskBox[61, 0.045618086497714774], 
+         DiskBox[62, 0.045618086497714774], DiskBox[63, 0.045618086497714774],
+          DiskBox[64, 0.045618086497714774], 
+         DiskBox[65, 0.045618086497714774], DiskBox[66, 0.045618086497714774],
+          DiskBox[67, 0.045618086497714774]}}]],
+     MouseAppearanceTag["NetworkGraphics"]],
+    AllowKernelInitialization->False]],
+  DefaultBaseStyle->"NetworkGraphics",
+  FormatType->TraditionalForm,
+  FrameTicks->None]], "Output",
+ CellChangeTimes->{3.9203771795967445`*^9},
+ CellLabel->
+  "Out[1382]=",ExpressionUUID->"bfb07f7e-7082-814e-ae70-9daed65013f0"]
+}, Open  ]]
+},
+WindowSize->{1141.2, 651.6},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"14.0 for Microsoft Windows (64-bit) (December 12, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"07375b58-0950-3744-acd5-9bc93e09a5a6"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 228, 4, 28, "Input",ExpressionUUID->"4117abf6-c6a5-6e46-a095-e0efb275203e"],
+Cell[789, 26, 422, 9, 86, "Input",ExpressionUUID->"1f4f822d-fe67-1340-8143-30bfeb69673f"],
+Cell[1214, 37, 3334, 74, 485, "Input",ExpressionUUID->"33e5ba8c-46aa-d04a-8c54-bf8daf3ba481"],
+Cell[4551, 113, 877, 22, 67, "Input",ExpressionUUID->"56af1836-9556-3f47-aaea-e948548525a5"],
+Cell[5431, 137, 4581, 123, 561, "Input",ExpressionUUID->"69f14c1e-101f-4b44-adde-7c89dc65fec8"],
+Cell[10015, 262, 329, 7, 28, "Input",ExpressionUUID->"07f12ea2-19df-7b47-b5e7-62dae8099946"],
+Cell[CellGroupData[{
+Cell[10369, 273, 325, 8, 28, "Input",ExpressionUUID->"cf811ca4-072a-f943-be0c-3179d8ef63aa"],
+Cell[10697, 283, 1448, 23, 66, "Output",ExpressionUUID->"5f837b40-eb89-d140-b305-aa9b5727ab2f"]
+}, Open  ]],
+Cell[12160, 309, 242, 5, 28, "Input",ExpressionUUID->"8703a3e3-24ee-9744-8049-2b9d7a8a6285"],
+Cell[12405, 316, 174, 3, 35, "Text",ExpressionUUID->"ee378a3c-a94d-b845-b97a-2da7da363b13"],
+Cell[12582, 321, 340, 9, 28, "Input",ExpressionUUID->"783074cf-f766-c441-ac84-62e5e24e6e79"],
+Cell[12925, 332, 163, 3, 35, "Text",ExpressionUUID->"f58708d7-7baf-904a-87e9-f965b648de5d"],
+Cell[CellGroupData[{
+Cell[13113, 339, 1382, 41, 86, "Input",ExpressionUUID->"4ec3b071-22f1-0443-8f3d-2ac67ed1a64d"],
+Cell[14498, 382, 13928, 239, 330, "Output",ExpressionUUID->"bfb07f7e-7082-814e-ae70-9daed65013f0"]
+}, Open  ]]
+}
+]
+*)
+
