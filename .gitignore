@@ -1,1 +1,10 @@
 python/__pycache__
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.log
+*.out
+latex/*.pdf
+*.run.xml
+*.synctex*
