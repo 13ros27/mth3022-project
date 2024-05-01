@@ -2,9 +2,10 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage[style=vancouver, sorting=none, doi=true, urldate=iso, seconds=true]{biblatex}
+\usepackage[style=vancouver, sorting=none, doi=true, urldate=iso, seconds=true, backend=bibtex8]{biblatex}
 \usepackage{float}
 \usepackage{hyperref}
+\usepackage{mathtools}
 \usepackage{tkz-euclide}
 
 \usetikzlibrary{arrows.meta, decorations.markings}
@@ -60,6 +61,105 @@ The Resource Description Framework is designed to standardise links between subj
 \subsection{OWL}
 TODO
 
+\section{Methods}
+
+\subsection*{Notation}
+
+Let $A = (V_A,E_A, \varepsilon_A)$ and $B = (V_B,E_B, \varepsilon_B)$ be two graphs with respective adjacency matrices $\bold A_A$ and $\bold A_B$.
+
+Let $n_A = |E_A|$, $n_B = |E_B|$ and $m_A = |V_A|$, $m_B = |V_B|$
+
+\subsection{Similarity}
+Each vertex has a unique id. (a unique name). Two vertecies of different graphs {\it match} when they have the same id.
+We say that the edges $e_A \in E_A$ and $e_B \in E_B$ are {\it matchig} if $\varepsilon_A(e_A)$ and $\varepsilon_B(e_B)$ map to matching vertecies.
+
+According to \cite{2019osti}, the {\it similrity} between two networks is the mean of four measurments :
+\begin{align*}
+\shortintertext{\bf Edge strength similarity $L_S$}
+  L_S &= \dfrac{\sum_{i = 1}^n|S_i^A - S_i^B|}{\sum_{i=1}^n|S_i^A + S_i^B|}
+\shortintertext{$S_i^A$ and $S_i^B$ are the strength (or weights) of the edge $i$ in both graphs.}
+\\
+\shortintertext{\bf Matching edge ratio $L_M$}
+  L_M &= \dfrac{N_E}{n}
+\shortintertext{$N_E$ is the number of edges matching in both networks, and $n$ is the maximum number of edges, $n = \max(n_A,n_B) = \max(|E_A|, |E_B|)$.}
+\\
+\shortintertext{\bf Vertex ratio $V_M$}
+  V_M &= \dfrac{N_V}{m}
+\shortintertext{$N_E$ is the number of matchig vertecies between networks, and $m$ is the total number of vertecies, $m = \max(m_A,m_B)=  \max(|V_A|, |V_B|)$.}
+\\
+\shortintertext{\bf Matching Cluster Ratio $V_C$}
+  V_C &= \dfrac{N_C}{m}
+\shortintertext{$N_C$ is the number of vertex cluster assignment between networks.}
+\end{align*}
+
+According to \cite{2019osti}, the {\bf total similarity} is :
+
+$$S = \dfrac{1-L_S + L_M + N_M + N_C}{4},\qquad S \in [0,1]$$
+
+Note that the studied and produced graphs of this paper don't use weighted edges. Thus, to compute the total similarity we don't take into accound the {\bf edge strength similarity}.
+i.e.
+$$S = \dfrac{L_M + N_M + N_C}{3},\qquad S \in [0,1]$$
+
+The aim of the total similarity is to see its distance to 1. In fact, a total similarity close to 1 reflects that the comparing graphs are similar.
+
+\subsection{Connectivity}
+
+The {\it vertex connectivity} $\kappa(A)$ of a connected graph $A$ refers the least cardinality $\kappa(A) = |S|$ of a subset of the vertex set $S \subset V_A$ such that the new graph $\tilde A = (\tilde V_A, \tilde E_A, \tilde \varepsilon_A)$ (with $\tilde V_A = V_A \backslash S$) is either disconnected or trivial.
+Such set $S$ is called a {\it minimum vertex cut}.
+
+The {\it strong vertecies} are the vertecies with a maximum vertex connectivity.
+%
+\vspace{-.5cm} %otherwise it is a bit "too" far away
+%
+\paragraph{Computation of the connectivity of a graph :}
+Let $N(v_1)$ be the set of all adjacent vertecies to $v_1$ (note that if $v_2\in N(v_1)$, then we have $v_1 \in N(v_2)$).\\
+Then, for a arbitrary vertex $v_1$ :
+%
+\begin{align*}
+\shortintertext{If $\exists \; S$ s.t. $v_1 \not\in S$, i.e. there is a minimum vertex-cut that does not contain $v_1$ :}
+  \kappa(A) &= \min\big\{\kappa(v_1,v_2) \:|\: v_1 \in V_A,\: v_2 \in V_A\backslash\{v_1\},\: \text{and $v_2$ is not adjacent to $v_1$}\big\}\\\\
+\shortintertext{If $v_1 \in S,\: \forall \:S$ :}
+  \kappa(A) &= \min\big\{\kappa(v_2,v_3) \:|\: v_2,v_3 \in N(v_1),\:\text{and $v_2,v_1$ are not adjacent}\big\}
+\end{align*}
+
+We can compute the connectivity by the maximum flow algorithm proposed by A.H. Esfahanian. (Algorithm 11) \cite{2013Esfahanian}.
+
+% talk about Menger's theorem (?)
+
+The aim of computing the connectivity of a graph is to compare the strong vertecies of different graphs. There are two questions to ask :
+Do both graphs have the same strong vertex? If they do, how different their connectivity is?\\
+If the differance between the connectivity of the strong vertex of each graph is close to 0, both graphs will be considered to have a similar structure.
+
+\subsection{Clustering}
+TODO
+
+\subsection{Spectral distances}
+
+Following \cite{2020Wills}, the $i,j-$th component of an {\it ajencency matrix} is defined as :
+$$\bold A_{i,j} = \begin{cases}1&\text{if}\; i\sim j,\\0&\text{otherwise.}\end{cases}$$
+The fact that $A_{i,j} = \{0,1\}$ means that there is at most one edge between two vertecies. Thereby we can define the {\it degree} $d_i$ of the vertex $i$ as the number of edges connected to the $i$.
+
+The {\it degree matrix} $\bold D$ is an eye matrix whose diaonal is composed by the degree of each vertex.
+
+$$\bold D_{i,j} =  \begin{cases}d_i&\text{if}\; i = j,\\0&\text{otherwise.}\end{cases}$$
+
+\paragraph{Spectrum of a matrix}
+
+The {\it spectrum of a matrix} is a sorted sequence of eigenvalues.\\
+Let us denote the $i-$th eigenvalue of the adjacency matrix by $\lambda_i^{\bold A}$, and the $i-$th eigenvalue of the laplacien matrix by $\lambda_i^{\bold L}$
+
+\paragraph{Adjacency and Laplacian spectral distance}
+Let $\lambda^{\bold A_A}$ and  $\lambda^{\bold A_B}$ be the adjacency spectra of the graphs $A$ and $B$ and let $\lambda^{\bold L_A}$ and  $\lambda^{\bold L_B}$ be their laplacien spectra.
+
+Then, the {\bf Adjacency spectral distance} is defined as :
+
+$$d_{\bold A}(A,B) = \Bigg( \sum_{i=1}^n (\lambda_i^{\bold A_A} - \lambda_i^{\bold A_B})^2\Bigg)^{1/2}$$
+
+The {\bf Laplacien spectral distance} is defined the same way but using the laplacien spectra.
+
+In this paper, the Adjacency and Laplacien spectral distances will be computed as defined in the \texttt{Week8-CompararingGraphs2023-4} worksheet.
+
+% aim : TODO 
 \printbibliography
 
 \end{document}
