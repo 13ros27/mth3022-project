@@ -21,7 +21,7 @@
 \addbibresource{references.bib}
 
 \title{MTH3022 Project (TODO: Name?)}
-\author{} % TODO: Should fill in
+\author{196722 \and } % TODO: Should fill in
 \date{}
 
 \begin{document}
@@ -61,7 +61,7 @@ The Resource Description Framework is designed to standardise links between subj
 \subsection{OWL}
 The Web Ontology Language (OWL) and its successor (OWL2) is designed to be a consistent framework to describe a variety of concepts related the internet. It does this by providing a set of axioms which constrain types of items (called "classes") and what relationships are permitted between them. This makes it possible to reason with data created by someone else because they will all use the same terms. OWL generally uses RDF (or a similar format) for describing the actual layout of the data, instead concerning itself with what sort of constraints those relationships model.
 
-There are multiple different types of both OWL and OWL2, designed for different use cases. OWL2 has a general specification `OWL2 DL'\cite{w3c_owl2} and then there exist profiles which remove some of the complexity to make them easier to use for particular domains, while still remaining fully compatible with `DL'. These profiles are `OWL2 EL' which is designed for relatively simple reasoning over very large datasets, `OWL2 QL' which allows queries about relationships between items to be answered very efficiently, for example in databases, and `OWL2 RL' which allows the user to reason directly on RDF triples.
+There are multiple different types of both OWL and OWL2, designed for different use cases. OWL2 has a general specification \emph{OWL2 DL}\cite{w3c_owl2} and then there exist profiles which remove some of the complexity to make them easier to use for particular domains, while still remaining fully compatible with \emph{DL}. These profiles are \emph{OWL2 EL}, designed for relatively simple reasoning over very large datasets, \emph{OWL2 QL} which allows queries about relationships between items to be answered very efficiently, for example in databases, and \emph{OWL2 RL} which allows the user to reason directly on RDF triples.
 
 \section{Methods}
 
@@ -72,7 +72,7 @@ Let $A = (V_A,E_A, \varepsilon_A)$ and $B = (V_B,E_B, \varepsilon_B)$ be two gra
 Let $n_A = |E_A|$, $n_B = |E_B|$ and $m_A = |V_A|$, $m_B = |V_B|$
 
 \subsection{Similarity}
-Each vertex has a unique id. (a unique name). Two vertecies of different graphs {\it match} when they have the same id.
+Each vertex has a unique id. (a unique name). Two vertices of different graphs {\it match} when they have the same id.
 We say that the edges $e_A \in E_A$ and $e_B \in E_B$ are {\it matchig} if $\varepsilon_A(e_A)$ and $\varepsilon_B(e_B)$ map to matching vertecies.
 
 According to \cite{2019otsi}, the {\it similrity} between two networks is the mean of four measurments :
@@ -137,24 +137,24 @@ In this paper we will focus on the communities, they are closely related to the 
 \subsection{Spectral distances}
 
 Following \cite{2020Wills}, the $i,j-$th component of an {\it ajencency matrix} is defined as :
-$$\bold A_{i,j} = \begin{cases}1&\text{if}\; i\sim j,\\0&\text{otherwise.}\end{cases}$$
+$$\mathbf A_{i,j} = \begin{cases}1&\text{if}\; i\sim j,\\0&\text{otherwise.}\end{cases}$$
 The fact that $A_{i,j} = \{0,1\}$ means that there is at most one edge between two vertecies. Thereby we can define the {\it degree} $d_i$ of the vertex $i$ as the number of edges connected to the $i$.
 
-The {\it degree matrix} $\bold D$ is an eye matrix whose diaonal is composed by the degree of each vertex.
+The {\it degree matrix} $\mathbf D$ is an eye matrix whose diaonal is composed by the degree of each vertex.
 
-$$\bold D_{i,j} =  \begin{cases}d_i&\text{if}\; i = j,\\0&\text{otherwise.}\end{cases}$$
+$$\mathbf D_{i,j} =  \begin{cases}d_i&\text{if}\; i = j,\\0&\text{otherwise.}\end{cases}$$
 
 \paragraph{Spectrum of a matrix}
 
 The {\it spectrum of a matrix} is a sorted sequence of eigenvalues.\\
-Let us denote the $i-$th eigenvalue of the adjacency matrix by $\lambda_i^{\bold A}$, and the $i-$th eigenvalue of the laplacien matrix by $\lambda_i^{\bold L}$
+Let us denote the $i-$th eigenvalue of the adjacency matrix by $\lambda_i^{\mathbf A}$, and the $i-$th eigenvalue of the laplacien matrix by $\lambda_i^{\mathbf L}$
 
 \paragraph{Adjacency and Laplacian spectral distance}
-Let $\lambda^{\bold A_A}$ and  $\lambda^{\bold A_B}$ be the adjacency spectra of the graphs $A$ and $B$ and let $\lambda^{\bold L_A}$ and  $\lambda^{\bold L_B}$ be their laplacien spectra.
+Let $\lambda^{\mathbf A_A}$ and  $\lambda^{\mathbf A_B}$ be the adjacency spectra of the graphs $A$ and $B$ and let $\lambda^{\mathbf L_A}$ and  $\lambda^{\mathbf L_B}$ be their laplacien spectra.
 
 Then, the {\bf Adjacency spectral distance} is defined as :
 
-$$d_{\bold A}(A,B) = \Bigg( \sum_{i=1}^n (\lambda_i^{\bold A_A} - \lambda_i^{\bold A_B})^2\Bigg)^{1/2}$$
+$$d_{\mathbf A}(A,B) = \Bigg( \sum_{i=1}^n (\lambda_i^{\mathbf A_A} - \lambda_i^{\mathbf A_B})^2\Bigg)^{1/2}$$
 
 The {\bf Laplacien spectral distance} is defined the same way but using the laplacien spectra.
 
