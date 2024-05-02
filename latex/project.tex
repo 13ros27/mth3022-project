@@ -67,7 +67,7 @@ There are multiple different types of both OWL and OWL2, designed for different 
 
 \subsection*{Notation}
 
-Let $A = (V_A,E_A, \varepsilon_A)$ and $B = (V_B,E_B, \varepsilon_B)$ be two graphs with respective adjacency matrices $\mathbf A_A$ and $\mathbf A_B$.
+Let $A = (V_A,E_A, \varepsilon_A)$ and $B = (V_B,E_B, \varepsilon_B)$ be two graphs with respective adjacency matrices $\bold A_A$ and $\bold A_B$.
 
 Let $n_A = |E_A|$, $n_B = |E_B|$ and $m_A = |V_A|$, $m_B = |V_B|$
 
@@ -75,7 +75,7 @@ Let $n_A = |E_A|$, $n_B = |E_B|$ and $m_A = |V_A|$, $m_B = |V_B|$
 Each vertex has a unique id. (a unique name). Two vertecies of different graphs {\it match} when they have the same id.
 We say that the edges $e_A \in E_A$ and $e_B \in E_B$ are {\it matchig} if $\varepsilon_A(e_A)$ and $\varepsilon_B(e_B)$ map to matching vertecies.
 
-According to \cite{2019osti}, the {\it similrity} between two networks is the mean of four measurments :
+According to \cite{2019otsi}, the {\it similrity} between two networks is the mean of four measurments :
 \begin{align*}
 \shortintertext{\bf Edge strength similarity $L_S$}
   L_S &= \dfrac{\sum_{i = 1}^n|S_i^A - S_i^B|}{\sum_{i=1}^n|S_i^A + S_i^B|}
@@ -94,7 +94,7 @@ According to \cite{2019osti}, the {\it similrity} between two networks is the me
 \shortintertext{$N_C$ is the number of vertex cluster assignment between networks.}
 \end{align*}
 
-According to \cite{2019osti}, the {\bf total similarity} is :
+According to \cite{2019otsi}, the {\bf total similarity} is :
 
 $$S = \dfrac{1-L_S + L_M + N_M + N_C}{4},\qquad S \in [0,1]$$
 
@@ -104,7 +104,7 @@ $$S = \dfrac{L_M + N_M + N_C}{3},\qquad S \in [0,1]$$
 
 The aim of the total similarity is to see its distance to 1. In fact, a total similarity close to 1 reflects that the comparing graphs are similar.
 
-\subsection{Connectivity}
+\subsection{Connectivity and comunities}
 
 The {\it vertex connectivity} $\kappa(A)$ of a connected graph $A$ refers the least cardinality $\kappa(A) = |S|$ of a subset of the vertex set $S \subset V_A$ such that the new graph $\tilde A = (\tilde V_A, \tilde E_A, \tilde \varepsilon_A)$ (with $\tilde V_A = V_A \backslash S$) is either disconnected or trivial.
 Such set $S$ is called a {\it minimum vertex cut}.
@@ -132,8 +132,7 @@ The aim of computing the connectivity of a graph is to compare the strong vertec
 Do both graphs have the same strong vertex? If they do, how different their connectivity is?\\
 If the differance between the connectivity of the strong vertex of each graph is close to 0, both graphs will be considered to have a similar structure.
 
-\subsection{Clustering}
-TODO
+In this paper we will focus on the communities, they are closely related to the strong vertecies since two comunities are separated by a strong vertex. They will be computed with the \texttt{Mathematica} function \texttt{FindGraphCommunities}.
 
 \subsection{Spectral distances}
 
@@ -162,6 +161,7 @@ The {\bf Laplacien spectral distance} is defined the same way but using the lapl
 In this paper, the Adjacency and Laplacien spectral distances will be computed as defined in the \texttt{Week8-CompararingGraphs2023-4} worksheet.
 
 % aim : TODO 
+
 \printbibliography
 
 \end{document}
