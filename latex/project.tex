@@ -59,13 +59,15 @@ The Resource Description Framework is designed to standardise links between subj
 \end{figure}
 
 \subsection{OWL}
-TODO
+The Web Ontology Language (OWL) and its successor (OWL2) is designed to be a consistent framework to describe a variety of concepts related the internet. It does this by providing a set of axioms which constrain types of items (called "classes") and what relationships are permitted between them. This makes it possible to reason with data created by someone else because they will all use the same terms. OWL generally uses RDF (or a similar format) for describing the actual layout of the data, instead concerning itself with what sort of constraints those relationships model.
+
+There are multiple different types of both OWL and OWL2, designed for different use cases. OWL2 has a general specification `OWL2 DL'\cite{w3c_owl2} and then there exist profiles which remove some of the complexity to make them easier to use for particular domains, while still remaining fully compatible with `DL'. These profiles are `OWL2 EL' which is designed for relatively simple reasoning over very large datasets, `OWL2 QL' which allows queries about relationships between items to be answered very efficiently, for example in databases, and `OWL2 RL' which allows the user to reason directly on RDF triples.
 
 \section{Methods}
 
 \subsection*{Notation}
 
-Let $A = (V_A,E_A, \varepsilon_A)$ and $B = (V_B,E_B, \varepsilon_B)$ be two graphs with respective adjacency matrices $\bold A_A$ and $\bold A_B$.
+Let $A = (V_A,E_A, \varepsilon_A)$ and $B = (V_B,E_B, \varepsilon_B)$ be two graphs with respective adjacency matrices $\mathbf A_A$ and $\mathbf A_B$.
 
 Let $n_A = |E_A|$, $n_B = |E_B|$ and $m_A = |V_A|$, $m_B = |V_B|$
 
