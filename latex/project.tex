@@ -161,6 +161,17 @@ The {\bf Laplacien spectral distance} is defined the same way but using the lapl
 In this paper, the Adjacency and Laplacien spectral distances will be computed as defined in the \texttt{Week8-CompararingGraphs2023-4} worksheet.
 
 % aim : TODO 
+\section{Graph Generation}
+To generate our RDF graph linking the maths modules to msc2020\cite{msc_2010} codes we chose to do this automatically from module descriptions rather than manually categorising modules. This allowed both a greater degree of objectivity and for us to include all modules on our graph rather than only those modules we have taken. Each module has a similar style to their module descriptions (except Group Project which we don't classify as it is too varied), so we parse their PDF descriptors and only take the `Syllabus Plan'.
+
+We split the syllabus plan into words and then classify each word to a msc2020 code, using Mathematica's built-in classifier trained on the entire subject classification (imported as a csv). One problem with this is that there are words like `the', `and' and also more specific things like `mathematics' that show up all over the place and therefore shouldn't really be classified to one particular module. To resolve this generally (rather than needing to create a list of ignored words) we used the probability Mathematica assigns to its classifications. For each module we then summed up the probabilities for any shared msc code and ordered them greatest to smallest. We can use the first 6 words of MTH1000 (Foundations) as an example:
+\begin{itemize}
+	\item \{\texttt{Functions, logarithmic, exponential, trigonometric, hyperbolic, Partial}\}
+	\item Then we use \texttt{Classifier} to convert this into \{\texttt{\{26Axx, 0.423802\}, \{11Axx, 0.760049\}, \{34Axx, 0.282966\}, \{42Axx, 0.968698\}, \{35Axx, 0.994287\}, \{35Axx, 0.342177\}}\}
+	\item This then gets grouped and summed by MSC code, in this case only the \texttt{35Axx} elements are combined, resulting in \{\texttt{\{35Axx, 1.336464\}, \{42Axx, 0.968698\}, \{11Axx, 0.760049\}, \{26Axx, 0.423802\}, \{34Axx, 0.282966\}}\}
+	\item We normalise these values so that they sum to $1$, ensuring consistency across module descriptors of different length: \{\texttt{\{35Axx, 0.354314\}, \{42Axx, 0.256814\}, \{11Axx, 0.201499\}, \{26Axx, 0.112355\}, \{34Axx, 0.0750179\}}\}
+  	\item Finally we add connections to our graphs for any values greater than $0.05$, while this would be all of them in our example, in general this averages out to about $5$ connections per module, although it varies between $2$ and $8$.
+\end{itemize}
 
 \printbibliography
 
