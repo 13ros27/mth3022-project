@@ -5,7 +5,7 @@ python/__pycache__
 *.blg
 *.log
 *.out
-latex/*.pdf
+latex/project.pdf
 *.run.xml
 *.synctex*
 *-blx.bib
