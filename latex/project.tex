@@ -75,10 +75,10 @@ Let $A = (V_A,E_A, \varepsilon_A)$ and $B = (V_B,E_B, \varepsilon_B)$ be two gra
 Let $n_A = |E_A|$, $n_B = |E_B|$ and $m_A = |V_A|$, $m_B = |V_B|$
 
 \subsection{Similarity}
-Each vertex has a unique id. (a unique name). Two vertices of different graphs {\it match} when they have the same id.
-We say that the edges $e_A \in E_A$ and $e_B \in E_B$ are {\it matchig} if $\varepsilon_A(e_A)$ and $\varepsilon_B(e_B)$ map to matching vertecies.
+Each vertex has a unique id (a unique name). Two vertices of different graphs {\it match} when they have the same id.
+We say that the edges $e_A \in E_A$ and $e_B \in E_B$ are {\it matching} if $\varepsilon_A(e_A)$ and $\varepsilon_B(e_B)$ map to matching vertices.
 
-According to \cite{2019osti}, the {\it similrity} between two networks is the mean of four measurments :
+According to \cite{2019osti}, the {\it similarity} between two networks is the mean of four measurements:
 \begin{align*}
 \shortintertext{\bf Edge strength similarity $L_S$}
   L_S &= \dfrac{\sum_{i = 1}^n|S_i^A - S_i^B|}{\sum_{i=1}^n|S_i^A + S_i^B|}
@@ -90,78 +90,78 @@ According to \cite{2019osti}, the {\it similrity} between two networks is the me
 \\
 \shortintertext{\bf Vertex ratio $V_M$}
   V_M &= \dfrac{N_V}{m}
-\shortintertext{$N_E$ is the number of matchig vertecies between networks, and $m$ is the total number of vertecies, $m = \max(m_A,m_B)=  \max(|V_A|, |V_B|)$.}
+\shortintertext{$N_E$ is the number of matching vertices between networks, and $m$ is the total number of vertices, $m = \max(m_A,m_B)=  \max(|V_A|, |V_B|)$.}
 \\
 \shortintertext{\bf Matching Cluster Ratio $V_C$}
   V_C &= \dfrac{N_C}{m}
 \shortintertext{$N_C$ is the number of vertex cluster assignment between networks.}
 \end{align*}
 
-According to \cite{2019osti}, the {\bf total similarity} is :
+According to \cite{2019osti}, the {\bf total similarity} is
 
 $$S = \dfrac{1-L_S + L_M + N_M + N_C}{4},\qquad S \in [0,1]$$
 
-Note that the studied and produced graphs of this paper don't use weighted edges. Thus, to compute the total similarity we don't take into accound the {\bf edge strength similarity}.
+Note that the studied and produced graphs of this paper don't use weighted edges. Thus, to compute the total similarity we don't take into account the {\bf edge strength similarity},
 i.e.
 $$S = \dfrac{L_M + N_M + N_C}{3},\qquad S \in [0,1]$$
 
-The aim of the total similarity is to see its distance to 1. In fact, a total similarity close to 1 reflects that the comparing graphs are similar.
+The aim of the total similarity is to see how far it is from one, as two identical graphs will have a total similarity of one.
 
 \subsection{Connectivity and communities}
 
-The {\it vertex connectivity} $\kappa(A)$ of a connected graph $A$ refers the least cardinality $\kappa(A) = |S|$ of a subset of the vertex set $S \subset V_A$ such that the new graph $\tilde A = (\tilde V_A, \tilde E_A, \tilde \varepsilon_A)$ (with $\tilde V_A = V_A \backslash S$) is either disconnected or trivial.
+The {\it vertex connectivity} $\kappa(A)$ of a connected graph $A$ refers to the least cardinality $\kappa(A) = |S|$ of a subset of the vertex set $S \subset V_A$ such that the new graph $\tilde A = (\tilde V_A, \tilde E_A, \tilde \varepsilon_A)$ (with $\tilde V_A = V_A \backslash S$) is either disconnected or trivial.
 Such set $S$ is called a {\it minimum vertex cut}.
 
-The {\it strong vertecies} are the vertecies with a maximum vertex connectivity.
+The {\it strong vertices} are the vertices with a maximum vertex connectivity.
 %
 \vspace{-.5cm} %otherwise it is a bit "too" far away
 %
-\paragraph{Computation of the connectivity of a graph :}
-Let $N(v_1)$ be the set of all adjacent vertecies to $v_1$ (note that if $v_2\in N(v_1)$, then we have $v_1 \in N(v_2)$).\\
-Then, for a arbitrary vertex $v_1$ :
+\paragraph{Computation of the connectivity of a graph:}
+Let $N(v_1)$ be the set of all adjacent vertices to $v_1$ (note that if $v_2\in N(v_1)$, then we have $v_1 \in N(v_2)$).\\
+Then, for an arbitrary vertex $v_1$:
 %
 \begin{align*}
-\shortintertext{If $\exists \; S$ s.t. $v_1 \not\in S$, i.e. there is a minimum vertex-cut that does not contain $v_1$ :}
+\shortintertext{If $\exists S$ s.t. $v_1 \not\in S$, i.e. there is a minimum vertex-cut that does not contain $v_1$ then}
   \kappa(A) &= \min\big\{\kappa(v_1,v_2) \:|\: v_1 \in V_A,\: v_2 \in V_A\backslash\{v_1\},\: \text{and $v_2$ is not adjacent to $v_1$}\big\}\\\\
-\shortintertext{If $v_1 \in S,\: \forall \:S$ :}
+\shortintertext{If $v_1 \in S,\: \forall S$ then}
   \kappa(A) &= \min\big\{\kappa(v_2,v_3) \:|\: v_2,v_3 \in N(v_1),\:\text{and $v_2,v_1$ are not adjacent}\big\}
 \end{align*}
 
-We can compute the connectivity by the maximum flow algorithm proposed by A.H. Esfahanian. (Algorithm 11) \cite{2013Esfahanian}.
+We can compute the connectivity by the maximum flow algorithm proposed by A.H. Esfahanian. \cite[Algorithm 11]{2013Esfahanian}.
 
 % talk about Menger's theorem (?)
 
-The aim of computing the connectivity of a graph is to compare the strong vertecies of different graphs. There are two questions to ask :
-Do both graphs have the same strong vertex? If they do, how different their connectivity is?\\
-If the differance between the connectivity of the strong vertex of each graph is close to 0, both graphs will be considered to have a similar structure.
+The aim of computing the connectivity of a graph is to compare the strong vertices of different graphs. There are two questions to ask:
+Do both graphs have the same strong vertex? If they do, how different is their connectivity?\\
+If the difference between the connectivity of the strong vertex of each graph is close to zero, both graphs will be considered to have a similar structure.
 
-In this paper we will focus on the communities, they are closely related to the strong vertecies since two communities are separated by a strong vertex. They will be computed with the \texttt{Mathematica} function \texttt{FindGraphCommunities}.
+In this paper we will focus on the communities, they are closely related to the strong vertices since two communities are separated by a strong vertex. They will be computed with the \texttt{Mathematica} function \texttt{FindGraphCommunities}.
 
 \subsection{Spectral distances}
 
-Following \cite{2020Wills}, the $i,j-$th component of an {\it ajencency matrix} is defined as :
+Following \cite{2020Wills}, the $i,j-$th component of an {\it adjacency matrix} is defined as
 $$\mathbf A_{i,j} = \begin{cases}1&\text{if}\; i\sim j,\\0&\text{otherwise.}\end{cases}$$
-The fact that $A_{i,j} = \{0,1\}$ means that there is at most one edge between two vertecies. Thereby we can define the {\it degree} $d_i$ of the vertex $i$ as the number of edges connected to the $i$.
+The fact that $A_{i,j} = \{0,1\}$ means that there is at most one edge between two vertices. Thereby we can define the {\it degree} $d_i$ of the vertex $i$ as the number of edges connected to the $i$.
 
-The {\it degree matrix} $\mathbf D$ is an eye matrix whose diaonal is composed by the degree of each vertex.
+The {\it degree matrix} $\mathbf D$ is a diagonal matrix whose diagonal contains the degree of each vertex.
 
 $$\mathbf D_{i,j} =  \begin{cases}d_i&\text{if}\; i = j,\\0&\text{otherwise.}\end{cases}$$
 
 \paragraph{Spectrum of a matrix}
 
 The {\it spectrum of a matrix} is a sorted sequence of eigenvalues.\\
-Let us denote the $i-$th eigenvalue of the adjacency matrix by $\lambda_i^{\mathbf A}$, and the $i-$th eigenvalue of the laplacien matrix by $\lambda_i^{\mathbf L}$
+Let us denote the $i$-th eigenvalue of the adjacency matrix by $\lambda_i^{\mathbf A}$, and the $i$-th eigenvalue of the Laplacian matrix by $\lambda_i^{\mathbf L}$
 
 \paragraph{Adjacency and Laplacian spectral distance}
-Let $\lambda^{\mathbf A_A}$ and  $\lambda^{\mathbf A_B}$ be the adjacency spectra of the graphs $A$ and $B$ and let $\lambda^{\mathbf L_A}$ and  $\lambda^{\mathbf L_B}$ be their laplacien spectra.
+Let $\lambda^{\mathbf A_A}$ and  $\lambda^{\mathbf A_B}$ be the adjacency spectra of the graphs $A$ and $B$ and let $\lambda^{\mathbf L_A}$ and  $\lambda^{\mathbf L_B}$ be their Laplacian spectra.
 
-Then, the {\bf Adjacency spectral distance} is defined as :
+Then, the {\bf Adjacency spectral distance} is defined as
 
 $$d_{\mathbf A}(A,B) = \Bigg( \sum_{i=1}^n (\lambda_i^{\mathbf A_A} - \lambda_i^{\mathbf A_B})^2\Bigg)^{1/2}$$
 
-The {\bf Laplacien spectral distance} is defined the same way but using the laplacien spectra.
+The {\bf Laplacian spectral distance} is defined equivalently, but obviously using the Laplacian spectra.
 
-In this paper, the Adjacency and Laplacien spectral distances will be computed as defined in the \texttt{Week8-CompararingGraphs2023-4} worksheet.
+In this paper, the Adjacency and Laplacian spectral distances will be computed as defined in the \texttt{Week8-ComparingGraphs2023-4} worksheet.
 
 % aim : TODO 
 \section{Graph Generation}
