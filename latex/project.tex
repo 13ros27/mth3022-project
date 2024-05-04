@@ -6,6 +6,8 @@
 \usepackage{float}
 \usepackage{hyperref}
 \usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{subcaption}
 \usepackage{tkz-euclide}
 
 \usetikzlibrary{arrows.meta, decorations.markings}
@@ -21,13 +23,14 @@
 \addbibresource{references.bib}
 
 \title{MTH3022 Project} % TODO: Decide
-\author{196722 \and 100612}
+\author{Candidate numbers : 196722, 100612}
 \date{}
 
 \begin{document}
 
 \maketitle
-
+\section{Introduction}
+TODO
 \section{Semantic Web}
 The semantic web is a set of standards defined by the World Wide Web Consortium\cite{w3c_website} with the goal of allowing computers to parse and understand internet data. The primary technologies they developed for this are the Resource Description Framework\cite{w3c_rdf} (RDF) and the Web Ontology Language\cite{w3c_owl} (OWL).
 
@@ -59,7 +62,7 @@ The Resource Description Framework is designed to standardise links between subj
 \end{figure}
 
 \subsection{OWL}
-The Web Ontology Language (OWL) and its successor (OWL2) is designed to be a consistent framework to describe a variety of concepts related the internet. It does this by providing a set of axioms which constrain types of items (called "classes") and what relationships are permitted between them. This makes it possible to reason with data created by someone else because they will all use the same terms. OWL generally uses RDF (or a similar format) for describing the actual layout of the data, instead concerning itself with what sort of constraints those relationships model.
+The Web Ontology Language (OWL) and its successor (OWL2) is designed to be a consistent framework to describe a variety of concepts related the internet. It does this by providing a set of axioms which constrain types of items (called ``classes'') and what relationships are permitted between them. This makes it possible to reason with data created by someone else because they will all use the same terms. OWL generally uses RDF (or a similar format) for describing the actual layout of the data, instead concerning itself with what sort of constraints those relationships model.
 
 There are multiple different types of both OWL and OWL2, designed for different use cases. OWL2 has a general specification \emph{OWL2 DL}\cite{w3c_owl2} and then there exist profiles which remove some of the complexity to make them easier to use for particular domains, while still remaining fully compatible with \emph{DL}. These profiles are \emph{OWL2 EL}, designed for relatively simple reasoning over very large datasets, \emph{OWL2 QL} which allows queries about relationships between items to be answered very efficiently, for example in databases, and \emph{OWL2 RL} which allows the user to reason directly on RDF triples.
 
@@ -162,22 +165,79 @@ In this paper, the Adjacency and Laplacien spectral distances will be computed a
 
 % aim : TODO 
 \section{Graph Generation}
-To generate our RDF graph linking the maths modules to msc2020\cite{msc_2010} codes we chose to do this automatically from module descriptions rather than manually categorising modules. This allowed both a greater degree of objectivity and for us to include all modules on our graph rather than only those modules we have taken. Each module has a similar style to their module descriptions (except Group Project which we don't classify as it is too varied), so we parse their PDF descriptors and only take the `Syllabus Plan'.
+To generate our RDF graph we chose to link automatically the maths modules to msc2020\cite{msc_2010} codes. This allowed both a greater degree of objectivity and for us to include all modules on our graph rather than only those we have taken. Notice that each module descriptor has a similar style (except Group Project which we didn't classify as it is too varied). Thereby, we were able to parse their PDF descriptors and only take the ``Syllabus Plan''.
 
-We split the syllabus plan into words and then classify each word to a msc2020 code, using Mathematica's built-in classifier trained on the entire subject classification (imported as a csv). One problem with this is that there are words like `the', `and' and also more specific things like `mathematics' that show up all over the place and therefore shouldn't really be classified to one particular module. To resolve this generally (rather than needing to create a list of ignored words) we used the probability Mathematica assigns to its classifications. For each module we then summed up the probabilities for any shared msc code and ordered them greatest to smallest. We can use the first 6 words of MTH1000 (Foundations) as an example:
+The syllabus plan is then splitted into words which are classified according to the msc2020 code using Mathematica's built-in classifier trained on the entire subject classification (imported as a csv). One of the encoutered problems was the use of pronounds and prepositions (``a'', ``the'', ``as'', ``and'', ``also'', etc) as well as maths ``general'' vocabulary (``mathematics'', ``model'', ``theorem'', etc). As these words were used in several if not all syllabus plans, they shouldn't be classified. To resolve this problem generally (rather than needing to create a list of ignored words) we used the probability that Mathematica assigns to its classifications. For each module we then summed up the probabilities for any shared msc code and ordered them in a decreasing order.
+
+Let us consider first 6 words of MTH1000 (Foundations) as an example :
+
+% To generate our RDF graph linking the maths modules to msc2020\cite{msc_2010} codes we chose to do this automatically from module descriptions rather than manually categorising modules. This allowed both a greater degree of objectivity and for us to include all modules on our graph rather than only those modules we have taken. Each module has a similar style to their module descriptions (except Group Project which we don't classify as it is too varied), so we parse their PDF descriptors and only take the `Syllabus Plan'.
+
+% {\color{red}
+% We split the syllabus plan into words and then classify each word to a msc2020 code, using Mathematica's built-in classifier trained on the entire subject classification (imported as a csv). One problem with this is that there are words like `the', `and' and also more specific things like `mathematics' that show up all over the place and therefore shouldn't really be classified to one particular module. To resolve this generally (rather than needing to create a list of ignored words) we used the probability Mathematica assigns to its classifications. For each module we then summed up the probabilities for any shared msc code and ordered them greatest to smallest. We can use the first 6 words of MTH1000 (Foundations) as an example:
+% }
 \begin{itemize}
-	\item \{\texttt{Functions, logarithmic, exponential, trigonometric, hyperbolic, Partial}\}
-	\item Then we use \texttt{Classifier} to convert this into \{\texttt{\{26Axx, 0.423802\}, \{11Axx, 0.760049\}, \{34Axx, 0.282966\}, \{42Axx, 0.968698\}, \{35Axx, 0.994287\}, \{35Axx, 0.342177\}}\}
-	\item This then gets grouped and summed by MSC code, in this case only the \texttt{35Axx} elements are combined, resulting in \{\texttt{\{35Axx, 1.336464\}, \{42Axx, 0.968698\}, \{11Axx, 0.760049\}, \{26Axx, 0.423802\}, \{34Axx, 0.282966\}}\}
-	\item We normalise these values so that they sum to $1$, ensuring consistency across module descriptors of different length: \{\texttt{\{35Axx, 0.354314\}, \{42Axx, 0.256814\}, \{11Axx, 0.201499\}, \{26Axx, 0.112355\}, \{34Axx, 0.0750179\}}\}
-  	\item Finally we add connections to our graphs for any values greater than $0.05$, while this would be all of them in our example, in general this averages out to about $5$ connections per module, although it varies between $2$ and $8$.
+\item[1.] We have the following list : 
+\{\texttt{Functions, logarithmic, exponential, trigonometric, hyperbolic, Partial}\}
+\item[2.] Then we use \texttt{Classifier} to convert the initial list into a list of tuples containing the msc2020 code assigned to the word and its probability : 
+\{\texttt{\{26Axx, 0.423802\}, \{11Axx, 0.760049\}, \{34Axx, 0.282966\}, \{42Axx, 0.968698\}, \{35Axx, 0.994287\}, \{35Axx, 0.342177\}}\}
+\item[3.] If the tuples have the same msc code (first entry) they are groped togeter and their probability (second entry) is summed up. In this case only the \texttt{35Axx} elements are combined, resulting in the list : \{\texttt{\{35Axx, 1.336464\}, \{42Axx, 0.968698\}, \{11Axx, 0.760049\}, \{26Axx, 0.423802\}, \{34Axx, 0.282966\}}\}
+	\item[4.] We normalise these values so that they sum to $1$, ensuring consistency across module descriptors of different length : \{\texttt{\{35Axx, 0.354314\}, \{42Axx, 0.256814\}, \{11Axx, 0.201499\}, \{26Axx, 0.112355\}, \{34Axx, 0.0750179\}}\}
+   	\item[5.] Finally, we connect the module code to the msc code if its probability is greater than $0.05$. In this example, all words are connected, but in general this averages out to about $5$ connections per module, although it varies between $2$ and $8$. 
 \end{itemize}
 
 \subsection*{Loading other graphs}
-To compare against graphs that other people have generated by hand, we import and merge all 5 of the public graphs shared to the forum (thanks to Ben White, Holly Barber, Lucie Johnson, Luke Garner and Donovan Tran). While these all do roughly follow our shared ontology (notably the relationship we want is always marked as \texttt{ex[uses]}), they use different urls to refer to MSC codes so can't directly be combined. Most of these graphs also link to the find grained codes like \texttt{03D65} however there wasn't enough text in these to classify so we instead only link to the more general \texttt{03Axx} codes. Therefore to combine these graphs we first filter them to remove all non-\texttt{ex[used]} relations and use regex to convert all msc codes to a shared format.
+
+In order to compare our graph to the ones generated manually, we import and merge all 5 of the public graphs shared to the forum (thanks to Ben White, Holly Barber, Lucie Johnson, Luke Garner and Donovan Tran). While these all do roughly follow our shared ontology (notably the relationship we want is always marked as \texttt{ex[uses]}), they use different urls to refer to MSC codes so can't directly be combined. Most of these graphs also link to the find grained codes like \texttt{03D65} however there wasn't enough text in these to classify so we instead only link to the more general \texttt{03Axx} codes. Therefore to combine these graphs we first filter them to remove all non-\texttt{ex[used]} relations and use regex to convert all msc codes to a shared format.
 
 The advantage of combining these graphs rather than comparing against any single one of them is that each graph only contains those modules the author has taken and so by combining them we get a more well-rounded view of the modules as a whole. Despite this there are still some modules none of these graphs classify, such as \texttt{MTH1000} and so we removed these nodes from our graph for most comparisons.
 
+\section{Comparation}
+Let {\bf RDF ours} denote our graph and {\bf RDF other} denote the graph generated by loading the public graphs shared in the forum. We compute their respective communities using mathematica's built in function \texttt{FindGraphCommunities} and obtain the following graphs :
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[height=\textwidth]{ComunitiesRDFours.pdf}
+        \caption{RDF ours}
+    \end{subfigure}%
+    ~ 
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[height=\textwidth]{ComunitiesRDFother.pdf}
+        \caption{RDF other}
+    \end{subfigure}
+    \caption{Comunities}
+\end{figure}
+
+In {\bf RDF other} graph we find the following communities :
+
+Red : MTH1004, MTH2006, MTH3022, MTH3024, MTH3028 (03-Mathematical logic and foundations, 05-Combinatorics, 15-Linear and multilinear algebra, 41-Approximations and expantions, 60-Probability theory and stochastic processes, 62-Statistics, 68-Computer science, 82-structure of matter, 97-Mathematics education)\\
+Yellow : MTH1002, MTH2003, MTH2008, MTH3030, MTH2009, MTH3040 (26-Real functions, 30- 	Functions of a complex variable, 32-Several complex variables and analytic spaces, 33-Special functions, 34-ODEs, 40-Sequences, series, summability, 42-Harmonic analysis on Euclidean spaces, 51-Geometry, 54-General topology, 86-Geophysics, 91-Game theory, economics, finance, and other social and behavioral sciences).\\
+Purple : MTH1001, MTH2010, MTH2011, MTH3004, MTH3026, MTH3038, (06-ordered algebraic structures, 08-General algebraic systems, 11-Number theory, 12-Field theory and polynomials, 13-Commutative algebra, 14-Algebraic geometry , 20-Group theory and generalizations, 94-Information and communication theory, circuits)\\
+Orange : MTH1003, MTH3006, MTH2005, (00-General and overarching topics; collections, 35-PDEs, 37-Dynamical systems and ergodic theory, 46-Functional analysis, 65-Numerical analysis, 83-Relativity and gravitational theory, 92-Biology and other natural sciences).\\
+Green : MTH2004, MTH3007, MTH3001, (53-Differential geometry, 74-Mechanics of deformable solids, 76-Fluid mechanics, 78-Optics, electromagnetic theory, 80-Classical thermodynamics, heat transfer).\\
+Brown : MTH3042, (44-Integral transforms, operational calculus, 45-Integral equations, 47-Operator theory).\\
+Cyan : MTH3019, (01-History and biography).
+
+
+In {\bf RDF ours} graph we find the following communities :
+
+Red : MTH1001, MTH2008, MTH2009, MTH3006, MTH3022, MTH3040,  03-Mathematical logic and foundations (05-Combinatorics, 26-Real functions, 28-Real functions, 32-Several complex variables and analytic spaces, 40-Sequences, series, summability, 46-Functional analysis, 54-General topology, 70-Mechanics of particles and systems, 94-Information and communication theory, circuits).\\
+Yellow : MTH1000, MTH2003, MTH2005, MTH3004, MTH3026, MTH3039, 65-Numerical analysis, 97-Mathematics education (11-Number Theory, 42-Harmonic analysis on Euclidean spaces, 34-ODEs, 35-PDEs, 68-Computer science, 16-Associative rings and algebras, 55-Algebraic topology)\\
+Purple : MTH1003, MTH2004, MTH3001, MTH3007 (31-Potential theory, 00-General and overarching topics; collections, 83-Relativity and gravitational theory, 39-Difference and functional equations, 76-Fluid mechanics, 91-Game theory, economics, finance, and other social and behavioral sciences, 80-Classical thermodynamics, heat transfe, 01-History and biography).\\
+Orange : MTH2006, MTH3030, MTH3011, MTH3045 (41-Approximations and expansions, 30-Functions of a complex variable, 81-Quantum theory, 82-Statistical mechanics, structure of matter, 93-Systems theory; control {For optimal control, 49-Calculus of variations and optimal control; optimization, 74-Mechanics of deformable solids).\\
+Dark Green : MTH1002, MTH2011, MTH3008, MTH3042 (45-Integral equations, 15-Linear and multilinear algebra; matrix theory, 44-Integral transforms, operational calculus, 47-Operator theory, 37-Dynamical systems and ergodic theory).\\
+Gold : MTH1004, MTH3024, MTH3041 (60-Probability theory and stochastic processes, 62-Statistics, 52-Convex and discrete geometry, 18-Category theory; homological algebra)\\
+Teal : MTH2010, MTH3038 (20-Group theory and generalizations, 13-Commutative algebra, 12-Field theory and polynomials).\\
+Light green : MTH3013, MTH3019, MTH3028 (51-Geometry, 86-Geophysics).
+
+
+\section{Conclusion}
+TODO
+\newpage
 \printbibliography
 
+  
 \end{document}
