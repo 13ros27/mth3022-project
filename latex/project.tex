@@ -150,7 +150,7 @@ $$\mathbf D_{i,j} =  \begin{cases}d_i&\text{if}\; i = j,\\0&\text{otherwise.}\en
 The {\it spectrum of a matrix} is a sorted sequence of eigenvalues.\\
 Let us denote the $i$-th eigenvalue of the adjacency matrix by $\lambda_i^{\mathbf A}$, and the $i$-th eigenvalue of the Laplacian matrix by $\lambda_i^{\mathbf L}$
 
-\paragraph{Adjacency and Laplacian spectral distance}
+\paragraph{Adjacency and Laplacian spectral distance} \label{sec:spectral_distance}
 Let $\lambda^{\mathbf A_A}$ and  $\lambda^{\mathbf A_B}$ be the adjacency spectra of the graphs $A$ and $B$ and let $\lambda^{\mathbf L_A}$ and  $\lambda^{\mathbf L_B}$ be their Laplacian spectra.
 
 Then, the {\bf Adjacency spectral distance} is defined as
@@ -162,7 +162,7 @@ The {\bf Laplacian spectral distance} is defined equivalently, but obviously usi
 In this paper, the Adjacency and Laplacian spectral distances will be computed as defined in the \texttt{Week8-ComparingGraphs2023-4} worksheet.
 
 % aim : TODO 
-\section{Graph Generation}
+\section{Graph Generation} \label{sec:graph_gen}
 To generate our RDF graph we chose to automatically link the maths modules to msc2020\cite{msc_2010} codes. This allowed both a greater degree of objectivity and for us to include all modules on our graph rather than only those we have taken. Notice that each module descriptor has a similar style (except Group Project which we didn't classify as it is too varied). Thereby we were able to parse their PDF descriptors and only take the ``Syllabus Plan''.
 
 The syllabus plan is then split into words which are classified according to the msc2020 code using Mathematica's built-in classifier trained on the entire subject classification (imported as a csv). One of problems we encountered was the use of pronouns and prepositions (`a', `the', `as', `and', `also', etc) as well as `general' maths vocabulary (`mathematics', `model', `theorem', etc). As these words were used in several if not all syllabus plans, they shouldn't be classified. To resolve this problem generally (rather than needing to create a list of ignored words) we used the probability that Mathematica assigns to its classifications. For each module we then summed up the probabilities for any repeated codes and ordered them in a decreasing order.
@@ -184,13 +184,19 @@ Let us consider the first 6 words of MTH1000 (Foundations) as an example :
    	\item[5.] Finally, we connect the module code to the msc code if its probability is greater than $0.05$. In this example, all words are connected, but in general this averages out to about $5$ connections per module, although it varies between $2$ and $8$. 
 \end{itemize}
 
-\subsection*{Loading other graphs}
-
+\subsection{Loading other graphs}
 In order to compare our graph to the ones generated manually, we import and merge all 5 of the public graphs shared to the forum (thanks to Ben White, Holly Barber, Lucie Johnson, Luke Garner and Donovan Tran). While these all do roughly follow our shared ontology (notably the relationship we want is always marked as \texttt{ex[uses]}), they use different urls to refer to MSC codes so can't directly be combined. Most of these graphs also link to the fine-grained codes like \texttt{03D65} however there wasn't enough text in these to classify so we instead only link to the more general \texttt{03Axx} codes. Therefore to combine these graphs we first filter them to remove all non-\texttt{ex[used]} relations and use regex to convert all msc codes to a shared format.
 
 The advantage of combining these graphs rather than comparing against any single one of them is that each graph only contains those modules the author has taken and so by combining them we get a more well-rounded view of the modules as a whole. Despite this there are still some modules none of these graphs classify such as \texttt{MTH1000}, and so we removed these nodes from our graph for most comparisons.
 
 \section{Comparison}
+When discussing generating graphs (section \ref{sec:graph_gen}) we picked an arbitrary probability cutoff of $0.05$ to define whether a particular edge is included in our final graph. Using the Adjacency and Laplacian spectral distances (section \ref{sec:spectral_distance}) we can instead compare a variety of different cutoffs and graph them, showing whether our picked value is reasonable.
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{CutoffComparison.pdf}
+\end{figure}
+As we can see from this, our value of $0.05$ is very close to the theoretical best value (with this test data) which would be between $0.045$ and $0.049$. Another thing of note with this graph is that with a couple of minor exceptions the lines monotonically increase away from the centre. This means that most of the new data we are adding is useful to the score (for the line to the right), and most of the data we are removing was useful for the line to the left, as opposed to it being more of a mixed bag which would suggest that our scoring mechanism was not suited to the task.
+
 Let {\bf RDF ours} denote our graph and {\bf RDF other} denote the graph generated by loading the public graphs shared in the forum. We compute their respective communities using mathematica's built in function \texttt{FindGraphCommunities} and obtain the following graphs
 
 \begin{figure}[H]
