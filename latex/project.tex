@@ -62,7 +62,7 @@ The Resource Description Framework is designed to standardise links between subj
 \end{figure}
 
 \subsection{OWL}
-The Web Ontology Language (OWL) and its successor (OWL2) is designed to be a consistent framework to describe a variety of concepts related the internet. It does this by providing a set of axioms which constrain types of items (called ``classes'') and what relationships are permitted between them. This makes it possible to reason with data created by someone else because they will all use the same terms. OWL generally uses RDF (or a similar format) for describing the actual layout of the data, instead concerning itself with what sort of constraints those relationships model.
+The Web Ontology Language (OWL) and its successor (OWL2) are designed to be consistent frameworks to describe a variety of concepts related to the internet. It does this by providing a set of axioms which constrain types of items (called ``classes'') and what relationships are permitted between them. This makes it possible to reason with data created by someone else because they will all use the same terms. OWL generally uses RDF (or a similar format) for describing the actual layout of the data, instead concerning itself with what sort of constraints those relationships model.
 
 There are multiple different types of both OWL and OWL2, designed for different use cases. OWL2 has a general specification \emph{OWL2 DL}\cite{w3c_owl2} and then there exist profiles which remove some of the complexity to make them easier to use for particular domains, while still remaining fully compatible with \emph{DL}. These profiles are \emph{OWL2 EL}, designed for relatively simple reasoning over very large datasets, \emph{OWL2 QL} which allows queries about relationships between items to be answered very efficiently, for example in databases, and \emph{OWL2 RL} which allows the user to reason directly on RDF triples.
 
@@ -79,33 +79,31 @@ Each vertex has a unique id (a unique name). Two vertices of different graphs {\
 We say that the edges $e_A \in E_A$ and $e_B \in E_B$ are {\it matching} if $\varepsilon_A(e_A)$ and $\varepsilon_B(e_B)$ map to matching vertices.
 
 According to \cite{2019osti}, the {\it similarity} between two networks is the mean of four measurements:
-\begin{align*}
-\shortintertext{\bf Edge strength similarity $L_S$}
-  L_S &= \dfrac{\sum_{i = 1}^n|S_i^A - S_i^B|}{\sum_{i=1}^n|S_i^A + S_i^B|}
-\shortintertext{$S_i^A$ and $S_i^B$ are the strength (or weights) of the edge $i$ in both graphs.}
-\\
-\shortintertext{\bf Matching edge ratio $L_M$}
-  L_M &= \dfrac{N_E}{n}
-\shortintertext{$N_E$ is the number of edges matching in both networks, and $n$ is the maximum number of edges, $n = \max(n_A,n_B) = \max(|E_A|, |E_B|)$.}
-\\
-\shortintertext{\bf Vertex ratio $V_M$}
-  V_M &= \dfrac{N_V}{m}
-\shortintertext{$N_E$ is the number of matching vertices between networks, and $m$ is the total number of vertices, $m = \max(m_A,m_B)=  \max(|V_A|, |V_B|)$.}
-\\
-\shortintertext{\bf Matching Cluster Ratio $V_C$}
-  V_C &= \dfrac{N_C}{m}
-\shortintertext{$N_C$ is the number of vertex cluster assignment between networks.}
-\end{align*}
+\paragraph{Edge strength similarity $L_S$}
+\[L_S = \frac{\sum_{i = 1}^n|S_i^A - S_i^B|}{\sum_{i=1}^n|S_i^A + S_i^B|},\]
+where $S_i^A$ and $S_i^B$ are the strength (or weights) of the edge $i$ in both graphs.
+
+\paragraph{Matching edge ratio $L_M$}
+\[L_M = \frac{N_E}{n},\]
+where $N_E$ is the number of edges matching in both networks, and $n$ is the total number of edges, $n = \max(n_A,n_B) = \max(|E_A|, |E_B|)$.
+
+\paragraph{Vertex ratio $V_M$}
+\[V_M = \frac{N_V}{m},\]
+where $N_E$ is the number of matching vertices between networks, and $m$ is the total number of vertices, $m = \max(m_A,m_B)=  \max(|V_A|, |V_B|)$.
+
+\paragraph{Matching Cluster Ratio $V_C$}
+\[V_C = \frac{N_C}{m},\]
+where $N_C$ is the number of vertex clusters shared between the graphs and $m$ is the number of vertices, as above.
 
 According to \cite{2019osti}, the {\bf total similarity} is
 
-$$S = \dfrac{1-L_S + L_M + N_M + N_C}{4},\qquad S \in [0,1]$$
+$$S = \dfrac{(1-L_S) + L_M + N_M + N_C}{4},\qquad S \in [0,1]$$
 
 Note that the studied and produced graphs of this paper don't use weighted edges. Thus, to compute the total similarity we don't take into account the {\bf edge strength similarity},
 i.e.
 $$S = \dfrac{L_M + N_M + N_C}{3},\qquad S \in [0,1]$$
 
-The aim of the total similarity is to see how far it is from one, as two identical graphs will have a total similarity of one.
+Two identical graphs will have a total similarity of one, so the further it is from that (and the closer to zero) the less similar the graphs are.
 
 \subsection{Connectivity and communities}
 
@@ -116,7 +114,7 @@ The {\it strong vertices} are the vertices with a maximum vertex connectivity.
 %
 \vspace{-.5cm} %otherwise it is a bit "too" far away
 %
-\paragraph{Computation of the connectivity of a graph:}
+\paragraph{Computation of the connectivity of a graph}
 Let $N(v_1)$ be the set of all adjacent vertices to $v_1$ (note that if $v_2\in N(v_1)$, then we have $v_1 \in N(v_2)$).\\
 Then, for an arbitrary vertex $v_1$:
 %
@@ -127,7 +125,7 @@ Then, for an arbitrary vertex $v_1$:
   \kappa(A) &= \min\big\{\kappa(v_2,v_3) \:|\: v_2,v_3 \in N(v_1),\:\text{and $v_2,v_1$ are not adjacent}\big\}
 \end{align*}
 
-We can compute the connectivity by the maximum flow algorithm proposed by A.H. Esfahanian. \cite[Algorithm 11]{2013Esfahanian}.
+We can compute the connectivity by the maximum flow algorithm proposed by A.H. Esfahanian \cite[Algorithm 11]{2013Esfahanian}.
 
 % talk about Menger's theorem (?)
 
