@@ -4,6 +4,7 @@
 \usepackage{amssymb}
 \usepackage[style=vancouver, sorting=none, doi=true, urldate=iso, seconds=true, backend=bibtex8]{biblatex}
 \usepackage{float}
+\usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{mathtools}
 \usepackage{graphicx}
@@ -22,7 +23,7 @@
 
 \addbibresource{references.bib}
 
-\title{MTH3022 Project} % TODO: Decide
+\title{MTH3022 Project : Knowledge representation via directed graphs} % TODO: Decide
 \author{Candidate numbers : 196722, 100612}
 \date{}
 
@@ -30,7 +31,8 @@
 
 \maketitle
 \section{Introduction}
-TODO
+Cathegorising knowledge is a real-word problem. In fact, two networks can represent the same field and yet have different kinds of classifications and different cathegories. In this paper, we will study two different ways to cathegorise mathematical knowledge via directed graphs. We chose to generate two graphs : one based on a semantic analysis of the syllabus plan of each mathematics bachelor modules, and the other based on the expiriance of 5 persons : where they linked mathematical topics to modules that they had followed during their bachelor. We will explore different ways to measure the ``similarity'' of these graphs while underpinning the differance between a ``subjective'' and ``objective'' graph production of the mathematical knowledge.
+
 \section{Semantic Web}
 The semantic web is a set of standards defined by the World Wide Web Consortium\cite{w3c_website} with the goal of allowing computers to parse and understand internet data. The primary technologies they developed for this are the Resource Description Framework\cite{w3c_rdf} (RDF) and the Web Ontology Language\cite{w3c_owl} (OWL).
 
@@ -127,8 +129,6 @@ Then, for an arbitrary vertex $v_1$:
 
 We can compute the connectivity by the maximum flow algorithm proposed by A.H. Esfahanian \cite[Algorithm 11]{2013Esfahanian}.
 
-% talk about Menger's theorem (?)
-
 The aim of computing the connectivity of a graph is to compare the strong vertices of different graphs. There are two questions to ask:
 Do both graphs have the same strong vertex? If they do, how different is their connectivity?\\
 If the difference between the connectivity of the strong vertex of each graph is close to zero, both graphs will be considered to have a similar structure.
@@ -157,15 +157,15 @@ Then, the {\bf Adjacency spectral distance} is defined as
 
 $$d_{\mathbf A}(A,B) = \Bigg( \sum_{i=1}^n (\lambda_i^{\mathbf A_A} - \lambda_i^{\mathbf A_B})^2\Bigg)^{1/2}$$
 
-The {\bf Laplacian spectral distance} is defined equivalently, but obviously using the Laplacian spectra.
+The {\bf Laplacian spectral distance} is defined equivalently, but using the Laplacian spectra.
 
 In this paper, the Adjacency and Laplacian spectral distances will be computed as defined in the \texttt{Week8-ComparingGraphs2023-4} worksheet.
 
 % aim : TODO 
 \section{Graph Generation} \label{sec:graph_gen}
-To generate our RDF graph we chose to automatically link the maths modules to msc2020\cite{msc_2010} codes. This allowed both a greater degree of objectivity and for us to include all modules on our graph rather than only those we have taken. Notice that each module descriptor has a similar style (except Group Project which we didn't classify as it is too varied). Thereby we were able to parse their PDF descriptors and only take the ``Syllabus Plan''.
+To generate our RDF graph we chose to automatically link the maths modules to msc2020\cite{msc_2010} codes. This allowed both a greater degree of objectivity and for us to include all modules on our graph rather than only those we have taken. Notice that each module descriptor has a similar style (except Group Project which we did not classify as it is too varied). Thereby we were able to parse their PDF descriptors and only take the ``Syllabus Plan''.
 
-The syllabus plan is then split into words which are classified according to the msc2020 code using Mathematica's built-in classifier trained on the entire subject classification (imported as a csv). One of problems we encountered was the use of pronouns and prepositions (`a', `the', `as', `and', `also', etc) as well as `general' maths vocabulary (`mathematics', `model', `theorem', etc). As these words were used in several if not all syllabus plans, they shouldn't be classified. To resolve this problem generally (rather than needing to create a list of ignored words) we used the probability that Mathematica assigns to its classifications. For each module we then summed up the probabilities for any repeated codes and ordered them in a decreasing order.
+The syllabus plan is then split into words which are classified according to the msc2020 code using Mathematica's built-in classifier trained on the entire subject classification (imported as a csv). One of problems we encountered was the use of pronouns and prepositions (`a', `the', `as', `and', `also', etc) as well as `general' maths vocabulary (`mathematics', `model', `theorem', etc). As these words were used in several if not all syllabus plans, they should not be classified. To resolve this problem generally (rather than needing to create a list of ignored words) we used the probability that Mathematica assigns to its classifications. For each module we then summed up the probabilities for any repeated codes and ordered them in a decreasing order.
 
 Let us consider the first 6 words of MTH1000 (Foundations) as an example :
 
@@ -180,25 +180,25 @@ Let us consider the first 6 words of MTH1000 (Foundations) as an example :
 \end{itemize}
 
 \subsection{Loading other graphs}
-In order to compare our graph to the ones generated manually, we import and merge all 5 of the public graphs shared to the forum (thanks to Ben White, Holly Barber, Lucie Johnson, Luke Garner and Donovan Tran). While these all do roughly follow our shared ontology (notably the relationship we want is always marked as \texttt{ex[uses]}), they use different urls to refer to MSC codes so can't directly be combined. Most of these graphs also link to the fine-grained codes like \texttt{03D65} however there wasn't enough text in these to classify so we instead only link to the more general \texttt{03Axx} codes. Therefore to combine these graphs we first filter them to remove all non-\texttt{ex[used]} relations and use regex to convert all msc codes to a shared format.
+In order to compare our graph to the ones generated manually, we import and merge all 5 of the public graphs shared to the forum (thanks to Ben White, Holly Barber, Lucie Johnson, Luke Garner and Donovan Tran). While these all do roughly follow our shared ontology (notably the relationship we want is always marked as \texttt{ex[uses]}), they use different urls to refer to MSC codes so can not directly be combined. Most of these graphs also link to the fine-grained codes like \texttt{03D65} however there wasn't enough text in these to classify so we instead only link to the more general \texttt{03Axx} codes. Therefore to combine these graphs we first filter them to remove all non-\texttt{ex[used]} relations and use regex to convert all msc codes to a shared format.
 
 The advantage of combining these graphs rather than comparing against any single one of them is that each graph only contains those modules the author has taken and so by combining them we get a more well-rounded view of the modules as a whole. Despite this there are still some modules none of these graphs classify such as \texttt{MTH1000}, and so we removed these nodes from our graph for most comparisons.
 
 \section{Comparison}
-When discussing generating graphs (section \ref{sec:graph_gen}) we picked an arbitrary probability cutoff of $0.05$ to define whether a particular edge is included in our final graph. Using the Adjacency and Laplacian spectral distances (section \ref{sec:spectral_distance}) we can instead compare a variety of different cutoffs and graph them, showing whether our picked value is reasonable.
+When discussing generating graphs (section \ref{sec:graph_gen}) we picked an arbitrary probability cutoff of $0.05$ to define whether a particular edge is included in our final graph. Using the Adjacency and Laplacian spectral distances (section \ref{sec:spectral_distance}) we can instead compare a variety of different cutoffs and plot them, showing whether our picked value is reasonable.
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.6]{CutoffComparison.pdf}
-\caption{Variation of the Laplacian and Adjacency coefficients as a function of the cutoff value}
+\caption{Variation of the Laplacien and Adjacency coeffincients in function of the cutoff value.}
 \label{fig:cutoff_comp}
 \end{figure}
 
-As we can see from Figure \ref{fig:cutoff_comp}, our probability value of $0.05$ is very close to the theoretical ``best'' value which -- based on this test data -- would be between $0.045$ and $0.049$. Notice also that this graph is overall monotonically increasing away from the centre. This suggests that as we increase the cutoff from $0.05$, most of the edges we remove are `useful' to the score and as we decrease the cutoff most of the new ones we are adding are not useful. This suggests that our method of classifying data is a good fit as we would otherwise expect the lines to be more varied.
-% {\color{red}REFORMULER : This means that most of the new data we are adding is useful to the score (for the line to the right), and most of the data we are removing was useful for the line to the left, as opposed to it being more of a mixed bag which would suggest that our scoring mechanism was not suited to the task.}
+As we can see from Figure \ref{fig:cutoff_comp}, our probability value of $0.05$ is very close to the ``best'' value which --- based on this test data --- would be between $0.045$ and $0.049$. Notice also that both curves have a single minimum which occurs around the same cutoff value. This indicates that as we increase the cutoff from $0.05$, most of the edges we remove are `useful' to the score and as we decrease the cutoff most of the new ones we are adding are not useful. This suggests that our method of classifying data provides a good fit as we would otherwise expect the lines to be more varied.
+
 
 Let {\bf RDF ours} denote our graph and {\bf RDF other} denote the graph generated by loading the public graphs shared in the forum. We compute their respective communities using mathematica's built in function \texttt{FindGraphCommunities} and obtain the graphs displayed in Fig.\ref{fig:communities_comp}.
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
@@ -211,21 +211,25 @@ Let {\bf RDF ours} denote our graph and {\bf RDF other} denote the graph generat
         \includegraphics[height=\textwidth]{CommunitiesRDFother.pdf}
         \caption{RDF other (see \ref{app:other_graph_communities})}
     \end{subfigure}
+    \vspace{.5cm}
     \caption{Communities comparation}
     \label{fig:communities_comp}
 \end{figure}
 
 
-First, notice that both graphs do not have the same number of communities. In fact, {\bf RDF ours} is divided into 8 communities \ref{app:our_graph_communities} whereas {\bf RDF other} has 7 communities \ref{app:other_graph_communities} which are not all connected. By taking a look in \ref{app:communities_comp} we note that {\bf RDF ours}'s communities have vertices correspond to more varied mathematical content. On the other hand, {\bf RDF other} has communities corresponding more to a specific topic in mathematics (e.g. Algebraic strucures, commutative algebra and Number theory (purple), Differential Geometry and applications (Green), etc).   
+First, we note that both graphs do not have the same number of communities. In fact, {\bf RDF ours} is divided into 8 communities (see \ref{app:our_graph_communities}), whereas {\bf RDF other} has 7 communities (see \ref{app:other_graph_communities}) including one which is disconnected. Hence, we are comparing two graphs, the first one with 8 communities against the second with 6. We observe that in {\bf RDF ours} the communities have a more varied range of mathematical topics, while {\bf RDF other}'s correspond to more general yet more distinct mathematical contents.
+In addition, {\bf RDF other}'s disjoint community correspond to History of mathematics (MTH3019) which in {\bf RDF ours} is not only part of a connected community (Light Green) but forms part of the strongly connected vertices.
 
-We use the built-in mathematica function \texttt{KCoreComponents} to compute the groups of vertices that are strongly connected \ref{app:strongly_connected_vertices}. The common strong vertices are MTH1001, MTH1002, MTH1003, MTH2003, MTH2006, MTH2009, MTH3022, MTH3024, 34-ODEs, 40-Sequences, series, summability, 41-Approximations and expansions; these vertices relate to calculus and analytical methods (e.g. Differential equations) and mathematical modeling.
+We use the built-in mathematica function \texttt{KCoreComponents} to compute the groups of vertices that are strongly connected (see \ref{app:strongly_connected_vertices}). The common strong vertices to both graphs are MTH1001, MTH1002, MTH1003, MTH2003, MTH2006, MTH2009, MTH3022, MTH3024, 34-ODEs, 40-Sequences series summability, 41-Approximations and expansions. These vertices relate to calculus and analytical methods (e.g. Differential equations) and mathematical modeling.
+We remark also that {\bf RDF ours} has much more strongly connected vertices (51 vertices against 34) but a maximal connectivity lower than {\bf RDF other} (3 against 4). Thus we can conclude that {\bf RDF ours} is more connected than {\bf RDF other}.
+
+{\color{red} Regarding similarity, we obtain...}
 
 \section{Conclusion}
-TODO
+{\color{red} TODO}
 
 
 \printbibliography
-
 \section*{Appendicies}
 \parskip=0.0pt
 \appendix
