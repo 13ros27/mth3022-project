@@ -76,7 +76,7 @@ Let $A = (V_A,E_A, \varepsilon_A)$ and $B = (V_B,E_B, \varepsilon_B)$ be two gra
 
 Let $n_A = |E_A|$, $n_B = |E_B|$ and $m_A = |V_A|$, $m_B = |V_B|$
 
-\subsection{Similarity}
+\subsection{Similarity}\label{ssec:similarity}
 Each vertex has a unique id (a unique name). Two vertices of different graphs {\it match} when they have the same id.
 We say that the edges $e_A \in E_A$ and $e_B \in E_B$ are {\it matching} if $\varepsilon_A(e_A)$ and $\varepsilon_B(e_B)$ map to matching vertices.
 
@@ -223,14 +223,17 @@ In addition, {\bf RDF other}'s disjoint community correspond to History of mathe
 We use the built-in mathematica function \texttt{KCoreComponents} to compute the groups of vertices that are strongly connected (see \ref{app:strongly_connected_vertices}). The common strong vertices to both graphs are MTH1001, MTH1002, MTH1003, MTH2003, MTH2006, MTH2009, MTH3022, MTH3024, 34-ODEs, 40-Sequences series summability, 41-Approximations and expansions. These vertices relate to calculus and analytical methods (e.g. Differential equations) and mathematical modeling.
 We remark also that {\bf RDF ours} has much more strongly connected vertices (51 vertices against 34) but a maximal connectivity lower than {\bf RDF other} (3 against 4). Thus we can conclude that {\bf RDF ours} is more connected than {\bf RDF other}.
 
-{\color{red} Regarding similarity, we obtain...}
+Regarding similarity measurments \ref{ssec:similarity}, we obtain : $$S = \dfrac{1417}{3210} \simeq0.44$$ This tells us that both graphs are not as similar as we could expect (we expected at least a similarity greater than $0.5$) since they are moddeling the same content. 
+
+{\color{red} make a plot with the similarity as a function of the cutoff}
 
 \section{Conclusion}
-{\color{red} TODO : (discussion)\\
+{\color{red} TODO : (discussion)
   - improving the student experience\\
-  - differences btw sobjective and subjective graph production\\
+  - differences btw objective and subjective graph production\\
   - analysis on the mathematics bachelor in Exeter : strongly connected vertecies -> what does that tell us about the mathematical content of the bachelor in Exeter?
 }
+
 
 
 \printbibliography
