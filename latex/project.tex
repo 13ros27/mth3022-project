@@ -4,7 +4,6 @@
 \usepackage{amssymb}
 \usepackage[style=vancouver, sorting=none, doi=true, urldate=iso, seconds=true, backend=bibtex8]{biblatex}
 \usepackage{float}
-\usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{mathtools}
 \usepackage{graphicx}
@@ -164,9 +163,9 @@ In this paper, the Adjacency and Laplacian spectral distances will be computed a
 
 % aim : TODO 
 \section{Graph Generation} \label{sec:graph_gen}
-To generate our RDF graph we chose to automatically link the maths modules to msc2020\cite{msc_2010} codes. This allowed both a greater degree of objectivity and for us to include all modules on our graph rather than only those we have taken. Notice that each module descriptor has a similar style (except Group Project which we did not classify as it is too varied). Thereby we were able to parse their PDF descriptors and only take the ``Syllabus Plan''.
+To generate our RDF graph we chose to automatically link the maths modules to msc2020\cite{msc_2010} codes. This allowed both a greater degree of objectivity and for us to include all modules on our graph rather than only those we have taken. Notice that each module descriptor has a similar style (except Group Project which we didn't classify as it is too varied). Thereby we were able to parse their PDF descriptors and only take the ``Syllabus Plan''.
 
-The syllabus plan is then split into words which are classified according to the msc2020 code using Mathematica's built-in classifier trained on the entire subject classification (imported as a csv). One of problems we encountered was the use of pronouns and prepositions (`a', `the', `as', `and', `also', etc) as well as `general' maths vocabulary (`mathematics', `model', `theorem', etc). As these words were used in several if not all syllabus plans, they should not be classified. To resolve this problem generally (rather than needing to create a list of ignored words) we used the probability that Mathematica assigns to its classifications. For each module we then summed up the probabilities for any repeated codes and ordered them in a decreasing order.
+The syllabus plan is then split into words which are classified according to the msc2020 code using Mathematica's built-in classifier trained on the entire subject classification (imported as a csv). One of problems we encountered was the use of pronouns and prepositions (`a', `the', `as', `and', `also', etc) as well as `general' maths vocabulary (`mathematics', `model', `theorem', etc). As these words were used in several if not all syllabus plans, they shouldn't be classified. To resolve this problem generally (rather than needing to create a list of ignored words) we used the probability that Mathematica assigns to its classifications. For each module we then summed up the probabilities for any repeated codes and ordered them in a decreasing order.
 
 Let us consider the first 6 words of MTH1000 (Foundations) as an example :
 
@@ -181,7 +180,7 @@ Let us consider the first 6 words of MTH1000 (Foundations) as an example :
 \end{itemize}
 
 \subsection{Loading other graphs}
-In order to compare our graph to the ones generated manually, we import and merge all 5 of the public graphs shared to the forum (thanks to Ben White, Holly Barber, Lucie Johnson, Luke Garner and Donovan Tran). While these all do roughly follow our shared ontology (notably the relationship we want is always marked as \texttt{ex[uses]}), they use different urls to refer to MSC codes so can not directly be combined. Most of these graphs also link to the fine-grained codes like \texttt{03D65} however there wasn't enough text in these to classify so we instead only link to the more general \texttt{03Axx} codes. Therefore to combine these graphs we first filter them to remove all non-\texttt{ex[used]} relations and use regex to convert all msc codes to a shared format.
+In order to compare our graph to the ones generated manually, we import and merge all 5 of the public graphs shared to the forum (thanks to Ben White, Holly Barber, Lucie Johnson, Luke Garner and Donovan Tran). While these all do roughly follow our shared ontology (notably the relationship we want is always marked as \texttt{ex[uses]}), they use different urls to refer to MSC codes so can't directly be combined. Most of these graphs also link to the fine-grained codes like \texttt{03D65} however there wasn't enough text in these to classify so we instead only link to the more general \texttt{03Axx} codes. Therefore to combine these graphs we first filter them to remove all non-\texttt{ex[used]} relations and use regex to convert all msc codes to a shared format.
 
 The advantage of combining these graphs rather than comparing against any single one of them is that each graph only contains those modules the author has taken and so by combining them we get a more well-rounded view of the modules as a whole. Despite this there are still some modules none of these graphs classify such as \texttt{MTH1000}, and so we removed these nodes from our graph for most comparisons.
 
@@ -190,7 +189,7 @@ When discussing generating graphs (section \ref{sec:graph_gen}) we picked an arb
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.6]{CutoffComparison.pdf}
-\caption{Variation of the Laplacien and Adjacency coeffincients in function of the cutoff value.}
+\caption{Variation of the Laplacian and Adjacency coefficients as a function of the cutoff value}
 \label{fig:cutoff_comp}
 \end{figure}
 
