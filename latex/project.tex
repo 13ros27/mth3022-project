@@ -4,6 +4,7 @@
 \usepackage{amssymb}
 \usepackage[style=vancouver, sorting=none, doi=true, urldate=iso, seconds=true, backend=bibtex8]{biblatex}
 \usepackage{float}
+\usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{mathtools}
 \usepackage{graphicx}
@@ -169,11 +170,6 @@ The syllabus plan is then split into words which are classified according to the
 
 Let us consider the first 6 words of MTH1000 (Foundations) as an example :
 
-% To generate our RDF graph linking the maths modules to msc2020\cite{msc_2010} codes we chose to do this automatically from module descriptions rather than manually categorising modules. This allowed both a greater degree of objectivity and for us to include all modules on our graph rather than only those modules we have taken. Each module has a similar style to their module descriptions (except Group Project which we don't classify as it is too varied), so we parse their PDF descriptors and only take the `Syllabus Plan'.
-
-% {\color{red}
-% We split the syllabus plan into words and then classify each word to a msc2020 code, using Mathematica's built-in classifier trained on the entire subject classification (imported as a csv). One problem with this is that there are words like `the', `and' and also more specific things like `mathematics' that show up all over the place and therefore shouldn't really be classified to one particular module. To resolve this generally (rather than needing to create a list of ignored words) we used the probability Mathematica assigns to its classifications. For each module we then summed up the probabilities for any shared msc code and ordered them greatest to smallest. We can use the first 6 words of MTH1000 (Foundations) as an example:
-% }
 \begin{itemize}
 \item[1.] We have the following list : 
 \{\texttt{Functions, logarithmic, exponential, trigonometric, hyperbolic, Partial}\}
@@ -238,27 +234,26 @@ All of the code and data files we used can be found at \url{https://github.com/1
 
 \section{Communities}\label{app:communities_comp}
 \subsection{Our Graph} \label{app:our_graph_communities}
-\begin{itemize}
-\item[{\bf Red}] MTH1001, MTH2008, MTH2009, MTH3006, MTH3022, MTH3040,  03-Mathematical logic and foundations (05-Combinatorics, 26-Real functions, 28- Measure and integration, 32-Several complex variables and analytic spaces, 40-Sequences, series, summability, 46-Functional analysis, 54-General topology, 70-Mechanics of particles and systems, 94-Information and communication theory, circuits).
-\item[{\bf Yellow}] MTH1000, MTH2003, MTH2005, MTH3004, MTH3026, MTH3039, (65-Numerical analysis, 97-Mathematics education, 11-Number Theory, 42-Harmonic analysis on Euclidean spaces, 34-ODEs, 35-PDEs, 68-Computer science, 16-Associative rings and algebras, 55-Algebraic topology)
-\item[{\bf Purple}] MTH1003, MTH2004, MTH3001, MTH3007 (31-Potential theory, 00-General and overarching topics; collections, 83-Relativity and gravitational theory, 39-Difference and functional equations, 76-Fluid mechanics, 91-Game theory, economics, finance, and other social and behavioral sciences, 80-Classical thermodynamics, heat transfe, 01-History and biography).
-\item[{\bf Orange}] MTH2006, MTH3030, MTH3011, MTH3045 (41-Approximations and expansions, 30-Functions of a complex variable, 81-Quantum theory, 82-Statistical mechanics, structure of matter, 93-Systems theory; control, 49-Calculus of variations and optimal control; optimization, 74-Mechanics of deformable solids).
-\item[{\bf Dark Green}] MTH1002, MTH2011, MTH3008, MTH3042 (45-Integral equations, 15-Linear and multilinear algebra; matrix theory, 44-Integral transforms, operational calculus, 47-Operator theory, 37-Dynamical systems and ergodic theory).
-\item[{\bf Gold}] MTH1004, MTH3024, MTH3041 (60-Probability theory and stochastic processes, 62-Statistics, 52-Convex and discrete geometry, 18-Category theory; homological algebra).
-\item[{\bf Teal}] MTH2010, MTH3038 (20-Group theory and generalizations, 13-Commutative algebra, 12-Field theory and polynomials).
-\item[{\bf Light Green}] MTH3013, MTH3019, MTH3028 (51-Geometry, 86-Geophysics).
-\end{itemize}
+%\begin{itemize}
+\paragraph{Red} MTH1001, MTH2008, MTH2009, MTH3006, MTH3022, MTH3040,  03-Mathematical logic and foundations (05-Combinatorics, 26-Real functions, 28- Measure and integration, 32-Several complex variables and analytic spaces, 40-Sequences, series, summability, 46-Functional analysis, 54-General topology, 70-Mechanics of particles and systems, 94-Information and communication theory, circuits).
+\paragraph{Yellow} MTH1000, MTH2003, MTH2005, MTH3004, MTH3026, MTH3039, (65-Numerical analysis, 97-Mathematics education, 11-Number Theory, 42-Harmonic analysis on Euclidean spaces, 34-ODEs, 35-PDEs, 68-Computer science, 16-Associative rings and algebras, 55-Algebraic topology)
+\paragraph{Purple} MTH1003, MTH2004, MTH3001, MTH3007 (31-Potential theory, 00-General and overarching topics; collections, 83-Relativity and gravitational theory, 39-Difference and functional equations, 76-Fluid mechanics, 91-Game theory, economics, finance, and other social and behavioral sciences, 80-Classical thermodynamics, heat transfe, 01-History and biography).
+\paragraph{Orange} MTH2006, MTH3030, MTH3011, MTH3045 (41-Approximations and expansions, 30-Functions of a complex variable, 81-Quantum theory, 82-Statistical mechanics, structure of matter, 93-Systems theory; control, 49-Calculus of variations and optimal control; optimization, 74-Mechanics of deformable solids).
+\paragraph{Dark Green} MTH1002, MTH2011, MTH3008, MTH3042 (45-Integral equations, 15-Linear and multilinear algebra; matrix theory, 44-Integral transforms, operational calculus, 47-Operator theory, 37-Dynamical systems and ergodic theory).
+\paragraph{Gold} MTH1004, MTH3024, MTH3041 (60-Probability theory and stochastic processes, 62-Statistics, 52-Convex and discrete geometry, 18-Category theory; homological algebra).
+\paragraph{Teal} MTH2010, MTH3038 (20-Group theory and generalizations, 13-Commutative algebra, 12-Field theory and polynomials).
+\paragraph{Light Green} MTH3013, MTH3019, MTH3028 (51-Geometry, 86-Geophysics).
+%\end{itemize}
 
 \subsection{Other Graph} \label{app:other_graph_communities}
-\begin{itemize}
-\item[{\bf Red}] MTH1004, MTH2006, MTH3022, MTH3024, MTH3028 (03-Mathematical logic and foundations, 05-Combinatorics, 15-Linear and multilinear algebra, 41-Approximations and expantions, 60-Probability theory and stochastic processes, 62-Statistics, 68-Computer science, 82-structure of matter, 97-Mathematics education).
-\item[{\bf Yellow}] MTH1002, MTH2003, MTH2008, MTH3030, MTH2009, MTH3040 (26-Real functions, 30-Functions of a complex variable, 32-Several complex variables and analytic spaces, 33-Special functions, 34-ODEs, 40-Sequences, series, summability, 42-Harmonic analysis on Euclidean spaces, 51-Geometry, 54-General topology, 86-Geophysics, 91-Game theory, economics, finance, and other social and behavioral sciences).
-\item[{\bf Purple}] MTH1001, MTH2010, MTH2011, MTH3004, MTH3026, MTH3038, (06-ordered algebraic structures, 08-General algebraic systems, 11-Number theory, 12-Field theory and polynomials, 13-Commutative algebra, 14-Algebraic geometry , 20-Group theory and generalizations, 94-Information and communication theory, circuits)
-\item[{\bf Orange}] MTH1003, MTH3006, MTH2005, (00-General and overarching topics; collections, 35-PDEs, 37-Dynamical systems and ergodic theory, 46-Functional analysis, 65-Numerical analysis, 83-Relativity and gravitational theory, 92-Biology and other natural sciences).
-\item[{\bf Green}] MTH2004, MTH3007, MTH3001, (53-Differential geometry, 74-Mechanics of deformable solids, 76-Fluid mechanics, 78-Optics, electromagnetic theory, 80-Classical thermodynamics, heat transfer).
-\item[{\bf Brown}] MTH3042, (44-Integral transforms, operational calculus, 45-Integral equations, 47-Operator theory).
-\item[{\bf Cyan}] MTH3019, (01-History and biography).
-\end{itemize}
+%\begin{itemize}
+\paragraph{Red} MTH1004, MTH2006, MTH3022, MTH3024, MTH3028 (03-Mathematical logic and foundations, 05-Combinatorics, 15-Linear and multilinear algebra, 41-Approximations and expantions, 60-Probability theory and stochastic processes, 62-Statistics, 68-Computer science, 82-structure of matter, 97-Mathematics education).
+\paragraph{Yellow} MTH1002, MTH2003, MTH2008, MTH3030, MTH2009, MTH3040 (26-Real functions, 30-Functions of a complex variable, 32-Several complex variables and analytic spaces, 33-Special functions, 34-ODEs, 40-Sequences, series, summability, 42-Harmonic analysis on Euclidean spaces, 51-Geometry, 54-General topology, 86-Geophysics, 91-Game theory, economics, finance, and other social and behavioral sciences).
+\paragraph{Purple} MTH1001, MTH2010, MTH2011, MTH3004, MTH3026, MTH3038, (06-ordered algebraic structures, 08-General algebraic systems, 11-Number theory, 12-Field theory and polynomials, 13-Commutative algebra, 14-Algebraic geometry , 20-Group theory and generalizations, 94-Information and communication theory, circuits)
+\paragraph{Orange} MTH1003, MTH3006, MTH2005, (00-General and overarching topics; collections, 35-PDEs, 37-Dynamical systems and ergodic theory, 46-Functional analysis, 65-Numerical analysis, 83-Relativity and gravitational theory, 92-Biology and other natural sciences).
+\paragraph{Green} MTH2004, MTH3007, MTH3001, (53-Differential geometry, 74-Mechanics of deformable solids, 76-Fluid mechanics, 78-Optics, electromagnetic theory, 80-Classical thermodynamics, heat transfer).
+\paragraph{Brown} MTH3042, (44-Integral transforms, operational calculus, 45-Integral equations, 47-Operator theory).
+\paragraph{Cyan} MTH3019, (01-History and biography).
 
 \section{Strongly Connected vertices} \label{app:strongly_connected_vertices}
 \subsection{Our Graph}
