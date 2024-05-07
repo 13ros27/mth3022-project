@@ -23,7 +23,7 @@
 
 \addbibresource{references.bib}
 
-\title{MTH3022 Project : Knowledge representation via directed graphs} % TODO: Decide
+\title{MTH3022 Project}% : Knowledge representation via directed graphs} % TODO: Decide
 \author{Candidate numbers : 196722, 100612}
 \date{}
 
@@ -31,7 +31,7 @@
 
 \maketitle
 \section{Introduction}
-Cathegorising knowledge is a real-word problem. {\color{red} why? For instance...}In fact, two networks can represent the same field and yet have different kinds of classifications and different cathegories. In this paper, we study two different ways to cathegorise mathematical knowledge based on Exeter University's mathematics bachelor programme. We chose to generate two graphs : one based on a semantic analysis of the syllabus plan of each module, and the other based on the modules and their content classified by 5 students. We explore different ways to measure the ``similarity'' of these graphs while underpinning the differance between a ``subjective'' and ``objective'' graph production of the mathematical knowledge.
+Cathegorising knowledge is a real-word problem. An example is to compare the semantic content of two articles related to a same topic. In fact, two networks can represent the same field and yet have different kinds of classifications and different cathegories. In this paper, we study two different ways to cathegorise mathematical knowledge based on Exeter University's mathematics bachelor programme. We chose to generate two graphs : one based on a semantic analysis of the syllabus plan of each module, and the other based on the academic trajectory of five students who linked the modules that they followed to their content. We explore different ways to measure the ``similarity'' of these graphs while underpinning the difference between a ``subjective'' and ``objective'' graph production of the mathematical knowledge.
 
 \section{Semantic Web}
 The semantic web is a set of standards defined by the World Wide Web Consortium\cite{w3c_website} with the goal of allowing computers to parse and understand internet data. The primary technologies they developed for this are the Resource Description Framework\cite{w3c_rdf} (RDF) and the Web Ontology Language\cite{w3c_owl} (OWL).
@@ -60,7 +60,6 @@ The Resource Description Framework is designed to standardise links between subj
 \draw[postaction={decorate}] (trees) -- (green) node[midway, above, sloped]{colour};
 \end{scope}
 \end{tikzpicture}
-% TODO: Should probably have a caption
 \end{figure}
 
 \subsection{OWL}
@@ -70,10 +69,9 @@ There are multiple different types of both OWL and OWL2, designed for different 
 
 \section{Methods}
 
-\subsection*{Notation}
+%\subsection*{Notation}
 
 Let $A = (V_A,E_A, \varepsilon_A)$ and $B = (V_B,E_B, \varepsilon_B)$ be two graphs with respective adjacency matrices $\mathbf A_A$ and $\mathbf A_B$.
-
 Let $n_A = |E_A|$, $n_B = |E_B|$ and $m_A = |V_A|$, $m_B = |V_B|$
 
 \subsection{Similarity}\label{ssec:similarity}
@@ -81,30 +79,29 @@ Each vertex has a unique id (a unique name). Two vertices of different graphs {\
 We say that the edges $e_A \in E_A$ and $e_B \in E_B$ are {\it matching} if $\varepsilon_A(e_A)$ and $\varepsilon_B(e_B)$ map to matching vertices.
 
 According to \cite{2019osti}, the {\it similarity} between two networks is the mean of four measurements:
-\paragraph{Edge strength similarity $L_S$}
+
+{\bf Edge strength similarity $L_S$ :}
 \[L_S = \frac{\sum_{i = 1}^n|S_i^A - S_i^B|}{\sum_{i=1}^n|S_i^A + S_i^B|},\]
 where $S_i^A$ and $S_i^B$ are the strength (or weights) of the edge $i$ in both graphs.
 
-\paragraph{Matching edge ratio $L_M$}
+{\bf Matching edge ratio $L_M$ :}
 \[L_M = \frac{N_E}{n},\]
 where $N_E$ is the number of edges matching in both networks, and $n$ is the total number of edges, $n = \max(n_A,n_B) = \max(|E_A|, |E_B|)$.
 
-\paragraph{Vertex ratio $V_M$}
+{\bf Vertex ratio $V_M$ :}
 \[V_M = \frac{N_V}{m},\]
 where $N_E$ is the number of matching vertices between networks, and $m$ is the total number of vertices, $m = \max(m_A,m_B)=  \max(|V_A|, |V_B|)$.
 
-\paragraph{Matching Cluster Ratio $V_C$}
+{\bf Matching Cluster Ratio $V_C$ :}
 \[V_C = \frac{N_C}{m},\]
 where $N_C$ is the number of vertex clusters shared between the graphs and $m$ is the number of vertices, as above.
 
-According to \cite{2019osti}, the {\bf total similarity} is
-
-$$S = \dfrac{(1-L_S) + L_M + V_M + V_C}{4},\qquad S \in [0,1]$$
+According to \cite{2019osti}, the {\bf total similarity} is :
+$$S = \dfrac{(1-L_S) + L_M + V_M + V_C}{4},\qquad S \in [0,1].$$
 
 Note that the studied and produced graphs of this paper do not use weighted edges. Thus, to compute the total similarity we do not take into account the {\bf edge strength similarity},
 i.e.
-$$S = \dfrac{L_M + V_M + V_C}{3},\qquad S \in [0,1]$$
-
+$$S = \dfrac{L_M + V_M + V_C}{3},\qquad S \in [0,1].$$
 Two identical graphs will have a total similarity of one, so the further it is from that (and the closer to zero) the less similar the graphs are.
 
 \subsection{Connectivity and communities}
@@ -113,24 +110,24 @@ The {\it vertex connectivity} $\kappa(A)$ of a connected graph $A$ refers to the
 Such set $S$ is called a {\it minimum vertex cut}.
 
 The {\it strong vertices} are the vertices with a maximum vertex connectivity.
-%
-\vspace{-.5cm} %otherwise it is a bit "too" far away
-%
-\paragraph{Computation of the connectivity of a graph}
-Let $N(v_1)$ be the set of all adjacent vertices to $v_1$ (note that if $v_2\in N(v_1)$, then we have $v_1 \in N(v_2)$).\\
-Then, for an arbitrary vertex $v_1$:
-%
-\begin{align*}
-\shortintertext{If $\exists S$ s.t. $v_1 \not\in S$, i.e. there is a minimum vertex-cut that does not contain $v_1$ then}
-  \kappa(A) &= \min\big\{\kappa(v_1,v_2) \:|\: v_1 \in V_A,\: v_2 \in V_A\backslash\{v_1\},\: \text{and $v_2$ is not adjacent to $v_1$}\big\}\\\\
-\shortintertext{If $v_1 \in S,\: \forall S$ then}
-  \kappa(A) &= \min\big\{\kappa(v_2,v_3) \:|\: v_2,v_3 \in N(v_1),\:\text{and $v_2,v_1$ are not adjacent}\big\}
-\end{align*}
+
+{\bf Computation of the connectivity of a graph :}
+Let $N(v_1)$ be the set of all adjacent vertices to $v_1$ (note that if $v_2\in N(v_1)$, then we have $v_1 \in N(v_2)$). Then, for an arbitrary vertex $v_1$, if $\exists S$ s.t. $v_1 \not\in S$, i.e. there is a minimum vertex-cut that does not contain $v_1$ then, 
+$\kappa(A) = \min\big\{\kappa(v_1,v_2) \:|\: v_1 \in V_A,\: v_2 \in V_A\backslash\{v_1\},\: \text{and $v_2$ is not adjacent to $v_1$}\big\}$;
+if $v_1 \in S,\: \forall S$ then, 
+$\kappa(A) = \min\big\{\kappa(v_2,v_3) \:|\: v_2,v_3 \in N(v_1),\:\text{and $v_2,v_1$ are not adjacent}\big\}$.
+
+% \begin{align*}
+% \shortintertext{If $\exists S$ s.t. $v_1 \not\in S$, i.e. there is a minimum vertex-cut that does not contain $v_1$ then}
+%   \kappa(A) &= \min\big\{\kappa(v_1,v_2) \:|\: v_1 \in V_A,\: v_2 \in V_A\backslash\{v_1\},\: \text{and $v_2$ is not adjacent to $v_1$}\big\}\\\\
+% \shortintertext{If $v_1 \in S,\: \forall S$ then}
+%   \kappa(A) &= \min\big\{\kappa(v_2,v_3) \:|\: v_2,v_3 \in N(v_1),\:\text{and $v_2,v_1$ are not adjacent}\big\}
+% \end{align*}
 
 We can compute the connectivity by the maximum flow algorithm proposed by A.H. Esfahanian \cite[Algorithm 11]{2013Esfahanian}.
 
 The aim of computing the connectivity of a graph is to compare the strong vertices of different graphs. There are two questions to ask:
-Do both graphs have the same strong vertex? If they do, how different is their connectivity?\\
+Do both graphs have the same strong vertex? If they do, how different is their connectivity?
 If the difference between the connectivity of the strong vertex of each graph is close to zero, both graphs will be considered to have a similar structure.
 
 In this paper we will focus on the communities, they are closely related to the strong vertices since two communities are separated by a strong vertex. They will be computed with the \texttt{Mathematica} function \texttt{FindGraphCommunities}.
@@ -141,20 +138,14 @@ Following \cite{2020Wills}, the $i,j-$th component of an {\it adjacency matrix} 
 $$\mathbf A_{i,j} = \begin{cases}1&\text{if}\; i\sim j,\\0&\text{otherwise.}\end{cases}$$
 The fact that $A_{i,j} = \{0,1\}$ means that there is at most one edge between two vertices. Thereby we can define the {\it degree} $d_i$ of the vertex $i$ as the number of edges connected to the $i$.
 
-The {\it degree matrix} $\mathbf D$ is a diagonal matrix whose diagonal contains the degree of each vertex.
+The {\it degree matrix} $\mathbf D$ is a diagonal matrix whose diagonal contains the degree of each vertex, $ D_{i,j} = d_{i}$ if $i = j$ and $ D_{i,j}  = 0$ otherwise.
+%$$\mathbf D_{i,j} =  \begin{cases}d_i&\text{if}\; i = j,\\0&\text{otherwise.}\end{cases}$$
 
-$$\mathbf D_{i,j} =  \begin{cases}d_i&\text{if}\; i = j,\\0&\text{otherwise.}\end{cases}$$
-
-\paragraph{Spectrum of a matrix}
-
-The {\it spectrum of a matrix} is a sorted sequence of eigenvalues.\\
+{\bf Spectrum of a matrix :} The {\it spectrum of a matrix} is a sorted sequence of eigenvalues.
 Let us denote the $i$-th eigenvalue of the adjacency matrix by $\lambda_i^{\mathbf A}$, and the $i$-th eigenvalue of the Laplacian matrix by $\lambda_i^{\mathbf L}$
 
-\paragraph{Adjacency and Laplacian spectral distance} \label{sec:spectral_distance}
-Let $\lambda^{\mathbf A_A}$ and  $\lambda^{\mathbf A_B}$ be the adjacency spectra of the graphs $A$ and $B$ and let $\lambda^{\mathbf L_A}$ and  $\lambda^{\mathbf L_B}$ be their Laplacian spectra.
-
+{\bf Adjacency and Laplacian spectral distance :} Let $\lambda^{\mathbf A_A}$ and  $\lambda^{\mathbf A_B}$ be the adjacency spectra of the graphs $A$ and $B$ and let $\lambda^{\mathbf L_A}$ and  $\lambda^{\mathbf L_B}$ be their Laplacian spectra.
 Then, the {\bf Adjacency spectral distance} is defined as
-
 $$d_{\mathbf A}(A,B) = \Bigg( \sum_{i=1}^n (\lambda_i^{\mathbf A_A} - \lambda_i^{\mathbf A_B})^2\Bigg)^{1/2}$$
 
 The {\bf Laplacian spectral distance} is defined equivalently, but using the Laplacian spectra.
@@ -163,20 +154,19 @@ In this paper, the Adjacency and Laplacian spectral distances will be computed a
 
 % aim : TODO 
 \section{Graph Generation} \label{sec:graph_gen}
-To generate our RDF graph we chose to automatically link the maths modules to msc2020\cite{msc_2010} codes. This allowed both a greater degree of objectivity and for us to include all modules on our graph rather than only those we have taken. Notice that each module descriptor has a similar style (except Group Project which we didn't classify as it is too varied). Thereby we were able to parse their PDF descriptors and only take the ``Syllabus Plan''.
+To generate our RDF graph we chose to automatically link the maths modules to msc2020\cite{msc_2010} codes. This allowed both a greater degree of objectivity and to include all modules on our graph rather than only those we have taken. Notice that each module descriptor has a similar style (except Group Project which we didn't classify as it is too varied). Thereby we were able to parse their PDF descriptors and only take the ``Syllabus Plan''.
 
-The syllabus plan is then split into words which are classified according to the msc2020 code using Mathematica's built-in classifier trained on the entire subject classification (imported as a csv). One of problems we encountered was the use of pronouns and prepositions (`a', `the', `as', `and', `also', etc) as well as `general' maths vocabulary (`mathematics', `model', `theorem', etc). As these words were used in several if not all syllabus plans, they shouldn't be classified. To resolve this problem generally (rather than needing to create a list of ignored words) we used the probability that Mathematica assigns to its classifications. For each module we then summed up the probabilities for any repeated codes and ordered them in a decreasing order.
+The syllabus plan is then split into words which are classified according to the msc2020 code using Mathematica's built-in classifier trained on the entire subject classification (imported as a csv). One of problems we encountered was the use of pronouns and prepositions (`a', `the', `as', `and', `also', etc) as well as `general' maths vocabulary (`mathematics', `model', `theorem', etc). As these words were used in several if not all syllabus plans, they can be omitted. To resolve this problem generally (rather than needing to create a list of ignored words) we used the probability that Mathematica assigns to its classifications. For each module we then summed up the probabilities for any repeated codes and ordered them in a decreasing order.
 
 Let us consider the first 6 words of MTH1000 (Foundations) as an example :
-
 \begin{itemize}
 \item[1.] We have the following list : 
 \{\texttt{Functions, logarithmic, exponential, trigonometric, hyperbolic, Partial}\}
 \item[2.] Then we use \texttt{Classifier} to convert the initial list into a list of tuples containing the msc2020 code assigned to the word and its probability : 
 \{\texttt{\{26Axx, 0.423802\}, \{11Axx, 0.760049\}, \{34Axx, 0.282966\}, \{42Axx, 0.968698\}, \{35Axx, 0.994287\}, \{35Axx, 0.342177\}}\}
-\item[3.] If the tuples have the same msc code (first entry) they are grouped together and their probability (second entry) is summed up. In this case only the \texttt{35Axx} elements are combined, resulting in the list: \{\texttt{\{35Axx, 1.336464\}, \{42Axx, 0.968698\}, \{11Axx, 0.760049\}, \{26Axx, 0.423802\}, \{34Axx, 0.282966\}}\}
+\item[3.] If the tuples have the same msc code (first entry) they are grouped together and their probabilities (second entry) are summed up. In this case only the \texttt{35Axx} elements are combined, resulting in the list: \{\texttt{\{35Axx, 1.336464\}, \{42Axx, 0.968698\}, \{11Axx, 0.760049\}, \{26Axx, 0.423802\}, \{34Axx, 0.282966\}}\}
 	\item[4.] We then normalise these values so that they sum to $1$, ensuring consistency across module descriptors of different lengths: \{\texttt{\{35Axx, 0.354314\}, \{42Axx, 0.256814\}, \{11Axx, 0.201499\}, \{26Axx, 0.112355\}, \{34Axx, 0.0750179\}}\}
-   	\item[5.] Finally, we connect the module code to the msc code if its probability is greater than $0.05$. In this example, all words are connected, but in general this averages out to about $5$ connections per module, although it varies between $2$ and $8$. 
+   	\item[5.] Finally, we connect the module code to the msc code if its probability is greater than the cutoff value of $0.05$. In this example, all words are connected, but in general this averages out to about $5$ connections per module, although it varies between $2$ and $8$. 
 \end{itemize}
 
 \subsection{Loading other graphs}
@@ -185,66 +175,74 @@ In order to compare our graph to the ones generated manually, we import and merg
 The advantage of combining these graphs rather than comparing against any single one of them is that each graph only contains those modules the author has taken and so by combining them we get a more well-rounded view of the modules as a whole. Despite this there are still some modules none of these graphs classify such as \texttt{MTH1000}, and so we removed these nodes from our graph for most comparisons.
 
 \section{Comparison}
-When discussing generating graphs (section \ref{sec:graph_gen}) we picked an arbitrary probability cutoff of $0.05$ to define whether a particular edge is included in our final graph. Using the Adjacency and Laplacian spectral distances (section \ref{sec:spectral_distance}) we can instead compare a variety of different cutoffs and plot them, showing whether our picked value is reasonable.
-\begin{figure}[H]
+When discussing generating graphs (section \ref{sec:graph_gen}) we picked an arbitrary probability cutoff of $0.05$ to define whether a particular edge is included in our final graph. Using the Adjacency and Laplacian spectral distances we can instead compare a variety of different cutoffs and plot them, showing whether our picked value is reasonable.
+\begin{figure}[h!]
 \centering
-\includegraphics[scale=0.6]{CutoffComparison.pdf}
-\caption{Variation of the Laplacien and Adjacency coeffincients as a function of the cutoff value.}
+\includegraphics[scale=0.5]{CutoffComparison.pdf}
+\caption{Variation of the Laplacian and Adjacency coefficients as a function of the cutoff value.}
 \label{fig:cutoff_comp}
 \end{figure}
 
-As we can see from Figure \ref{fig:cutoff_comp}, our probability value of $0.05$ is very close to the ``best'' value which --- based on this test data --- would be between $0.045$ and $0.049$. Notice also that both curves have a single minimum which occurs around the same cutoff value. This indicates that as we increase the cutoff from $0.05$, most of the edges we remove are `useful' to the score and as we decrease the cutoff most of the new ones we are adding are not useful. This suggests that our method of classifying data provides a good fit as we would otherwise expect the lines to be more varied.
+As we can see from Figure \ref{fig:cutoff_comp}, our probability value of $0.05$ is very close to the ``best'' value which --- based on this test data --- would be between $0.045$ and $0.049$. Notice also that both curves have a single minimum which occurs around the same cutoff value. This indicates that as we increase the cutoff from $0.05$, most of the edges we remove are `useful' to the score and as we decrease the cutoff most of the new ones we are adding are not useful. In this sense, the cutoff value is appropriate.
+
+Let {\bf RDF ours} denote our graph and {\bf RDF other} denote the graph generated by loading the public graphs shared in the forum.
 
 
-Let {\bf RDF ours} denote our graph and {\bf RDF other} denote the graph generated by loading the public graphs shared in the forum. We compute their respective communities using mathematica's built in function \texttt{FindGraphCommunities} and obtain the graphs displayed in Fig.\ref{fig:communities_comp}.
-
-\begin{figure}[H]
+We compute their respective communities using mathematica's built in function \texttt{FindGraphCommunities} and obtain the graphs displayed in Figure \ref{fig:communities_comp}.
+\begin{figure}
     \centering
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.35\textwidth}
         \centering
         \includegraphics[height=\textwidth]{CommunitiesRDFours.pdf}
         \caption{RDF ours (see \ref{app:our_graph_communities})}
     \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
+    \hfil
+    \begin{subfigure}[b]{0.35\textwidth}
         \centering
         \includegraphics[height=\textwidth]{CommunitiesRDFother.pdf}
         \caption{RDF other (see \ref{app:other_graph_communities})}
     \end{subfigure}
     \vspace{.5cm}
-    \caption{Communities comparation}
+    \caption{Communities comparison}
     \label{fig:communities_comp}
 \end{figure}
 
-
 First, we note that both graphs don't have the same number of communities. In fact, {\bf RDF ours} is divided into 8 communities (see \ref{app:our_graph_communities}), whereas {\bf RDF other} has 7 communities (see \ref{app:other_graph_communities}) including one which is disconnected. Hence, we are comparing two graphs, the first one with 8 communities against the second with 6. We observe that in {\bf RDF ours} the communities have a more varied range of mathematical topics, while {\bf RDF other}'s correspond to more general yet more distinct mathematical contents.
-In addition, {\bf RDF other}'s disjoint community correspond to History of mathematics (MTH3019) which in {\bf RDF ours} is not only part of a connected community (Light Green) but forms part of the strongly connected vertices.
+In addition, {\bf RDF other}'s disjoint community corresponds to History of mathematics (MTH3019) which in {\bf RDF ours} is not only part of a connected community (Light Green) but forms part of the strongly connected vertices.
 
 We use the built-in mathematica function \texttt{KCoreComponents} to compute the groups of vertices that are strongly connected (see \ref{app:strongly_connected_vertices}). The common strong vertices to both graphs are MTH1001, MTH1002, MTH1003, MTH2003, MTH2006, MTH2009, MTH3022, MTH3024, 34-ODEs, 40-Sequences series summability, 41-Approximations and expansions. These vertices relate to calculus and analytical methods (e.g. Differential equations) and mathematical modeling.
+We interpret this result as an information on what are the modules and subjects that most students take and enjoy. 
+
 We remark also that {\bf RDF ours} has much more strongly connected vertices (51 vertices against 34) but a maximal connectivity lower than {\bf RDF other} (3 against 4). Thus we can conclude that {\bf RDF ours} is more connected than {\bf RDF other}.
 
-Regarding similarity measurments \ref{ssec:similarity}, we obtain : $$S = \dfrac{1417}{3210} \simeq0.44$$ This tells us that both graphs are not as similar as we could expect (we expected at least a similarity greater than $0.5$) since they are moddeling the same content. 
+Regarding similarity measurments (\ref{ssec:similarity}), we obtain : $S = \frac{1417}{3210} \simeq0.44$.
+This tells us that both graphs are not as similar as we would expect. We expected at larger value of similarity, since they are modelling the same content.
 
-{\color{red} make a plot with the similarity as a function of the cutoff}
+
+In Figure \ref{fig:similarity} we notice that the cutoff value of $0.05$ is the value for which the similarity is at its maximum. This is consistent with the results illustrated in  Figure \ref{fig:cutoff_comp}.
+
+\begin{figure}
+\centering
+\includegraphics[scale=.4]{Similarity.pdf}
+\caption{Variation of similarity coefficients as a function of the cutoff value.}
+\label{fig:similarity}
+\end{figure}
 
 \section{Conclusion}
-{\color{red} TODO : (discussion)
-  - improving the student experience\\
-  - differences btw objective and subjective graph production\\
-  - analysis on the mathematics bachelor in Exeter : strongly connected vertecies -> what does that tell us about the mathematical content of the bachelor in Exeter?
-}
-
-
+To compare the ``similarity'' of {\bf RDF ours} and {\bf RDF other} we considered three methods : the similarity coefficient, the connectivity coefficients and analysis of communities, and the spectral distances between both graphs. 
+The spectral distances allowed us to confirm our choice for the cutoff value to generate {\bf RDF ours}.
+Even thought both graphs model the same courses, they have a low similarity : $0.44$. We attribute this to the structural difference between the graph construction. Moreover, {\bf RDF other} has a disconnected community which is not the case for {\bf RDF ours}. We believe this is a consequence of the subjectivity when constructing {\bf RDF other}: even thought {\bf RDF other} was based on the academic experience of five students (not just one), the fact that the vertices are modules they selected and the mathematical content they associate to them makes the classification of mathematical knowledge more subjective.
+%{\color{red}(discussion improving the student experience)}
 
 \printbibliography
-\section*{Appendicies}
-\parskip=0.0pt
 \appendix
-\section{Code}
+\section{Appendix}
+\parskip=0.0pt
+\subsection{Code}
 All of the code and data files we used can be found at \url{https://github.com/13ros27/mth3022-project}, with the primary Mathematica project being \texttt{mathematica/Project.nb}.
 
-\section{Communities}\label{app:communities_comp}
-\subsection{Our Graph} \label{app:our_graph_communities}
+\subsection{Communities}\label{app:communities_comp}
+\subsubsection{Our Graph} \label{app:our_graph_communities}
 \paragraph{Red} MTH1001, MTH2008, MTH2009, MTH3006, MTH3022, MTH3040,  03-Mathematical logic and foundations (05-Combinatorics, 26-Real functions, 28- Measure and integration, 32-Several complex variables and analytic spaces, 40-Sequences, series, summability, 46-Functional analysis, 54-General topology, 70-Mechanics of particles and systems, 94-Information and communication theory, circuits).
 \parskip=-16.0pt
 \paragraph{Yellow} MTH1000, MTH2003, MTH2005, MTH3004, MTH3026, MTH3039, (65-Numerical analysis, 97-Mathematics education, 11-Number Theory, 42-Harmonic analysis on Euclidean spaces, 34-ODEs, 35-PDEs, 68-Computer science, 16-Associative rings and algebras, 55-Algebraic topology)
@@ -256,7 +254,7 @@ All of the code and data files we used can be found at \url{https://github.com/1
 \paragraph{Light Green} MTH3013, MTH3019, MTH3028 (51-Geometry, 86-Geophysics).
 \parskip=0.0pt
 
-\subsection{Other Graph} \label{app:other_graph_communities}
+\subsubsection{Other Graph} \label{app:other_graph_communities}
 \paragraph{Red} MTH1004, MTH2006, MTH3022, MTH3024, MTH3028 (03-Mathematical logic and foundations, 05-Combinatorics, 15-Linear and multilinear algebra, 41-Approximations and expantions, 60-Probability theory and stochastic processes, 62-Statistics, 68-Computer science, 82-structure of matter, 97-Mathematics education).
 \parskip=-16.0pt
 \paragraph{Yellow} MTH1002, MTH2003, MTH2008, MTH3030, MTH2009, MTH3040 (26-Real functions, 30-Functions of a complex variable, 32-Several complex variables and analytic spaces, 33-Special functions, 34-ODEs, 40-Sequences, series, summability, 42-Harmonic analysis on Euclidean spaces, 51-Geometry, 54-General topology, 86-Geophysics, 91-Game theory, economics, finance, and other social and behavioral sciences).
@@ -267,14 +265,14 @@ All of the code and data files we used can be found at \url{https://github.com/1
 \paragraph{Cyan} MTH3019, (01-History and biography).
 \parskip=0.0pt
 
-\section{Strongly Connected vertices} \label{app:strongly_connected_vertices}
-\subsection{Our Graph}
+\subsection{Strongly Connected vertices} \label{app:strongly_connected_vertices}
+\subsubsection{Our Graph}
 \paragraph{Maximal connectivity} 3;
 \parskip=-8.0pt
 \paragraph{List of strongly connected vertices} MTH1000, MTH1001, MTH1002, MTH1003, MTH1004, MTH2003, MTH2004, MTH2005, MTH2006, MTH2009, MTH2010, MTH3001, MTH3004, MTH3007, MTH3008, MTH3011, MTH3013, MTH3019, MTH3022, MTH3024, MTH3026, MTH3028, MTH3030, MTH3038, MTH3039, MTH3041, MTH3042, MTH3045, 01, 11, 12, 20, 30 31, 32, 34, 35, 39, 40, 41, 44, 45, 47, 51, 60, 62, 65, 68, 76, 91, 94.
 \parskip=0.0pt
 
-\subsection{Other Graph}
+\subsubsection{Other Graph}
 \paragraph{Maximal connectivity} 4;
 \parskip=-8.0pt
 \paragraph{List of strongly connected vertices} MTH1001, MTH1002, MTH1003, MTH2003, MTH2006, MTH2009, MTH3022, MTH3024, 03, 15, 26, 34, 40, 41, 97.
